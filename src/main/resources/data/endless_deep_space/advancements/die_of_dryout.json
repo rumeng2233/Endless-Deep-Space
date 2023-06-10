@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:water_bucket"
+    },
+    "title": {
+      "translate": "advancements.die_of_dryout.title"
+    },
+    "description": {
+      "translate": "advancements.die_of_dryout.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "die_of_dryout": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 20000
+  },
+  "parent": "endless_deep_space:one_death"
+}

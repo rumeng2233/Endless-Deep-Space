@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+  	"endless_deep_space.custom:nihility_block",
+  	"endless_deep_space.custom:placeholder_air",
+  	"endless_deep_space.custom:star_cube_end_portal",
+  	"endless_deep_space.custom:star_cube_end_gateway",
+  	"endless_deep_space.custom:white_guiding_stone",
+    "endless_deep_space.custom:blue_guiding_stone",
+    "endless_deep_space.custom:black_guiding_stone",
+    "endless_deep_space.custom:yellow_guiding_stone",
+    "endless_deep_space.custom:red_guiding_stone",
+    "endless_deep_space.custom:purple_guiding_stone",
+    "endless_deep_space.custom:pink_guiding_stone",
+    "endless_deep_space.custom:orange_guiding_stone",
+    "endless_deep_space.custom:magenta_guiding_stone",
+    "endless_deep_space.custom:lime_guiding_stone",
+    "endless_deep_space.custom:light_gray_guiding_stone",
+    "endless_deep_space.custom:light_blue_guiding_stone",
+    "endless_deep_space.custom:green_guiding_stone",
+    "endless_deep_space.custom:gray_guiding_stone",
+    "endless_deep_space.custom:cyan_guiding_stone",
+    "endless_deep_space.custom:brown_guiding_stone",
+    "endless_deep_space.custom:broken_beacon",
+    "endless_deep_space:geocentric_grass_block",
+    "endless_deep_space:geocentric_dirt"
+  	]
+}

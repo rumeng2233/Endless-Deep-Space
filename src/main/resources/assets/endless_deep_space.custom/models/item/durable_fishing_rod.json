@@ -1,0 +1,14 @@
+{
+    "parent": "item/handheld_rod",
+  "textures": {
+    "layer0": "endless_deep_space.custom:item/durable_fishing_rod"
+  },
+    "overrides": [
+      {
+        "predicate": {
+          "cast": 1
+        },
+        "model": "endless_deep_space.custom:item/durable_fishing_rod_cast"
+      }
+    ]
+}

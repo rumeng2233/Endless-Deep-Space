@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "endless_deep_space:blocks/smooth_stone",
+    "up": "endless_deep_space:blocks/smooth_stone",
+    "north": "endless_deep_space:blocks/water_absorber",
+    "east": "endless_deep_space:blocks/water_absorber",
+    "south": "endless_deep_space:blocks/water_absorber",
+    "west": "endless_deep_space:blocks/water_absorber",
+    "particle": "endless_deep_space:blocks/smooth_stone"
+  },
+  "render_type": "solid"
+}

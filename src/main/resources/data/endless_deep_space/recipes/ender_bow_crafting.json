@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "endless_deep_space.custom:durable_bow"
+  },
+  "addition": {
+    "item": "minecraft:ender_pearl"
+  },
+  "result": {
+    "item": "endless_deep_space:ender_bow"
+  }
+}

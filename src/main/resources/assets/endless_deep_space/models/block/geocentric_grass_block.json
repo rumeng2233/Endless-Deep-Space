@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "endless_deep_space:blocks/geocentric_dirt",
+    "top": "endless_deep_space:blocks/grass_block_top",
+    "side": "endless_deep_space:blocks/geocentric_grass_block_side",
+    "overlay": "endless_deep_space:blocks/grass_block_side_overlay",
+    "particle": "endless_deep_space:blocks/geocentric_dirt"
+  },
+  "render_type": "cutout_mipped"
+}

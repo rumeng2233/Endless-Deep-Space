@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "endless_deep_space:eyeball_item"
+    },
+    "title": {
+      "translate": "advancements.when_you_look_long_into_an_abyss_the_abyss_looks_into_you.title"
+    },
+    "description": {
+      "translate": "advancements.when_you_look_long_into_an_abyss_the_abyss_looks_into_you.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "when_you_look_long_into_an_abyss_the_abyss_looks_into_you": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 15000
+  },
+  "parent": "endless_deep_space:add_the_end"
+}

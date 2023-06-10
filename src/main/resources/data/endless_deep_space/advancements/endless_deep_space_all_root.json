@@ -1,0 +1,23 @@
+{
+  "display": {
+    "background": "minecraft:textures/block/stone.png",
+    "icon": {
+      "item": "endless_deep_space:logo"
+    },
+    "title": {
+      "translate": "advancements.endless_deep_space_all_root.title"
+    },
+    "description": {
+      "translate": "advancements.endless_deep_space_all_root.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "endless_deep_space_all_root": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

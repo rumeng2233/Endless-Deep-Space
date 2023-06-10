@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:stick"
+    },
+    "1": {
+      "item": "minecraft:iron_ingot"
+    },
+    "2": {
+      "item": "minecraft:stick"
+    },
+    "3": {
+      "item": "minecraft:string"
+    },
+    "4": {
+      "item": "minecraft:tripwire_hook"
+    },
+    "5": {
+      "item": "minecraft:string"
+    },
+    "6": {
+      "item": "minecraft:string"
+    },
+    "7": {
+      "item": "minecraft:stick"
+    },
+    "8": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space.custom:durable_crossbow",
+    "count": 1
+  }
+}

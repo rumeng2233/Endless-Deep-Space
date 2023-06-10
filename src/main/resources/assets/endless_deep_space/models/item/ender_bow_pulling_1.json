@@ -1,0 +1,6 @@
+{
+    "parent": "endless_deep_space:item/ender_bow",
+    "textures": {
+        "layer0": "endless_deep_space:items/ender_bow_pulling_1"
+    }
+}

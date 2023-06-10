@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1"
+  ],
+  "key": {
+    "0": {
+      "tag": "forge:stone"
+    },
+    "1": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space:stone_pocket_knife",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "forge:any"
+  },
+  "features": "endless_deep_space:replica_of_the_ender_altar",
+  "step": "surface_structures"
+}

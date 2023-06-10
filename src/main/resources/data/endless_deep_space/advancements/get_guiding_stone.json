@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:beacon"
+    },
+    "title": {
+      "translate": "advancements.get_guiding_stone.title"
+    },
+    "description": {
+      "translate": "advancements.get_guiding_stone.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_guiding_stone": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:get_glowstone"
+}

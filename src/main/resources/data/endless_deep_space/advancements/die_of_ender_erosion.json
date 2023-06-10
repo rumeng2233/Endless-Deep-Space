@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    "title": {
+      "translate": "advancements.die_of_ender_erosion.title"
+    },
+    "description": {
+      "translate": "advancements.die_of_ender_erosion.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "die_of_ender_erosion": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:one_death"
+}

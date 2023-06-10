@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "endless_deep_space.custom:star_cube_end_gateway"
+    },
+    "title": {
+      "translate": "advancements.get_star_cube.title"
+    },
+    "description": {
+      "translate": "advancements.get_star_cube.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_star_cube": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:add_the_end"
+}

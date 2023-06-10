@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "endless_deep_space:blocks/star_cube",
+    "east": "endless_deep_space:blocks/star_cube",
+    "north": "endless_deep_space:blocks/star_cube",
+    "particle": "endless_deep_space:blocks/star_cube",
+    "south": "endless_deep_space:blocks/star_cube",
+    "up": "endless_deep_space:blocks/star_cube",
+    "west": "endless_deep_space:blocks/star_cube"
+  }
+}

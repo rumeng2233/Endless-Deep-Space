@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "endless_deep_space:items/stone_pocket_knife"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    " 4 ",
+    " 7 "
+  ],
+  "key": {
+    "0": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "1": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "2": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "4": {
+      "item": "minecraft:stick"
+    },
+    "7": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space:raging_fire_pickaxe",
+    "count": 1
+  }
+}

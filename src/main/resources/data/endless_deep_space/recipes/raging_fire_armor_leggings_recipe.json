@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "3 5",
+    "6 8"
+  ],
+  "key": {
+    "0": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "1": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "2": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "3": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "5": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "6": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "8": {
+      "item": "endless_deep_space:raging_fire_dust"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space:raging_fire_armor_leggings",
+    "count": 1
+  }
+}

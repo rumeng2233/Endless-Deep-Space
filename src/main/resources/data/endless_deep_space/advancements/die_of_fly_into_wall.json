@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:elytra"
+    },
+    "title": {
+      "translate": "advancements.die_of_fly_into_wall.title"
+    },
+    "description": {
+      "translate": "advancements.die_of_fly_into_wall.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "die_of_fly_into_wall": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:one_death"
+}

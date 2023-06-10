@@ -1,0 +1,6 @@
+{
+  "parent": "endless_deep_space:item/penetrating_bow",
+  "textures": {
+    "layer0": "endless_deep_space:items/penetrating_bow_pulling_0"
+  }
+}

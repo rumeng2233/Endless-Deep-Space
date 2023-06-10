@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "endless_deep_space:block/geocentric_portal_ew"
+    },
+    "axis=x": {
+      "model": "endless_deep_space:block/geocentric_portal_ns"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": {
+    "type": "forge:any"
+  },
+  "features": "endless_deep_space:raging_fire_ore",
+  "step": "underground_ores"
+}

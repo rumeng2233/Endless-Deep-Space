@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "endless_deep_space:blocks/frozen_ore",
+    "particle": "endless_deep_space:blocks/frozen_ore"
+  },
+  "render_type": "solid"
+}

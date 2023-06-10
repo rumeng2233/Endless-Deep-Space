@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:lightning_rod"
+    },
+    "title": {
+      "translate": "advancements.die_of_lightning_bolt.title"
+    },
+    "description": {
+      "translate": "advancements.die_of_lightning_bolt.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "die_of_lightning_bolt": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:one_death"
+}

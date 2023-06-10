@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:barrier"
+    },
+    "title": {
+      "translate": "advancements.die_in_hardcore.title"
+    },
+    "description": {
+      "translate": "advancements.die_in_hardcore.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "die_in_hardcore": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:one_death"
+}

@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    "title": {
+      "translate": "advancements.add_the_end.title"
+    },
+    "description": {
+      "translate": "advancements.add_the_end.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "add_the_end": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:the_end"
+      }
+    }
+  },
+  "rewards": {
+    "experience": 0,
+    "recipes": [
+      "endless_deep_space:ender_erosion_protection_crafting",
+      "endless_deep_space:ender_erosion_protection_medium_crafting",
+      "endless_deep_space:ender_erosion_protection_long_crafting"
+    ]
+  },
+  "parent": "endless_deep_space:get_guiding_stone"
+}

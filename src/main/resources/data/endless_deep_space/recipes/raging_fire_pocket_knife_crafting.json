@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0",
+    "1"
+  ],
+  "key": {
+    "0": {
+      "item": "endless_deep_space:raging_fire_dust"
+    },
+    "1": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space:raging_fire_pocket_knife",
+    "count": 1
+  }
+}

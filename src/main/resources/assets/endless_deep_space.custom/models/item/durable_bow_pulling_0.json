@@ -1,0 +1,6 @@
+{
+    "parent": "endless_deep_space.custom:item/durable_bow",
+    "textures": {
+        "layer0": "endless_deep_space.custom:item/durable_bow_pulling_0"
+    }
+}

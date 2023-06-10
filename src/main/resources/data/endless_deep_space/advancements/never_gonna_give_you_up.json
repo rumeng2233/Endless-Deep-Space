@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:ender_pearl"
+    },
+    "title": {
+      "translate": "advancements.never_gonna_give_you_up.title"
+    },
+    "description": {
+      "translate": "advancements.never_gonna_give_you_up.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "never_gonna_give_you_up": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 333
+  },
+  "parent": "endless_deep_space:add_the_end"
+}

@@ -1,0 +1,39 @@
+{
+  "required": true,
+  "package": "shirumengya.rumeng.reborn.endless_deep_space.custom.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8.5",
+  "refmap": "endless_deep_space.mixin.refmap.json",
+  "plugin": "shirumengya.rumeng.reborn.endless_deep_space.custom.mixin.MixinPlugin",
+  "mixins": [
+	"LivingEntityMixin",
+	"EntityMixin",
+	"DamageEnchantmentMixin",
+	"EnderDragonMixin",
+	"DragonFireballMixin",
+	"EndCrystalMixin",
+	"DragonStrafePlayerPhaseMixin",
+	"AnvilMenuMixin",
+	"EnchantedBookItemMixin",
+	"CraftingMenuMixin",
+	"FletchingTableBlockMixin",
+	"WitherBossMixin",
+	"WitherSkullMixin"
+  ],
+  "client": [
+	"DeathScreenMixin",
+	"TitleScreenMixin",
+	"MinecraftMixin",
+	"OptionsScreenMixin",
+	"OutOfMemoryScreenMixin",
+	"ProgressScreenMixin",
+	"ClientPacketListenerMixin",
+	"MusicManagerMixin",
+	"LevelRendererMixin",
+	"AnvilScreenMixin",
+	"LevelLoadingScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

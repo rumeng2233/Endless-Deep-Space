@@ -1,0 +1,42 @@
+{
+	"group": "guiding_stone_crafting",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "012",
+    "345",
+    "678"
+  ],
+  "key": {
+    "0": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "1": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "2": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "3": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "4": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "5": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "6": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "7": {
+      "tag": "endless_deep_space:guiding_stone"
+    },
+    "8": {
+      "tag": "endless_deep_space:guiding_stone"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space.custom:pure_black_guiding_stone",
+    "count": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "endless_deep_space.custom:item/durable_crossbow",
+  "textures": {
+    "layer0": "item/crossbow_pulling_1"
+  }
+}

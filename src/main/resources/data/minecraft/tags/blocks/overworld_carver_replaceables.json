@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:air",
+    "endless_deep_space:nihility",
+    "endless_deep_space:geocentric_stone",
+    "endless_deep_space:geocentric_grass_block",
+    "endless_deep_space:geocentric_dirt"
+  ]
+}

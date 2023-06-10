@@ -1,0 +1,78 @@
+{
+  "entity.mad_witch.block": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.mad_witch.block",
+    "sounds": [
+      {
+        "name": "endless_deep_space:mad_witch.block",
+        "stream": false
+      }
+    ]
+  },
+  "music.see": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "endless_deep_space:music.endless_deep_space.see",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.intertwined": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "endless_deep_space:music_disc.endless_deep_space.intertwined",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.the_lost": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "endless_deep_space:the_lost",
+        "stream": true
+      }
+    ]
+  },
+  "never_gonna_give_you_up": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "endless_deep_space:never_gonna_give_you_up",
+        "stream": true
+      }
+    ]
+  },
+  "genshin_impact_main_theme": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "endless_deep_space:genshin_impact_dream_aria",
+        "stream": true
+      },
+      {
+        "name": "endless_deep_space:genshin_impact_genshin_impact_main_theme",
+        "stream": true
+      },
+      {
+        "name": "endless_deep_space:genshin_impact_twilight_serenity",
+        "stream": true
+      }
+    ]
+  },
+  "c418_0x10c": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "endless_deep_space:c418_0",
+        "stream": true
+      },
+      {
+        "name": "endless_deep_space:c418_0x10c",
+        "stream": true
+      }
+    ]
+  }
+}

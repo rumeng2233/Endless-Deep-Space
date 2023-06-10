@@ -1,0 +1,11 @@
+{
+  "type": "endless_deep_space.custom:conversion",
+  "input": [
+    {
+      "item": "minecraft:ender_pearl"
+    }
+  ],
+  "output": {
+    "item": "minecraft:ender_eye"
+  }
+}

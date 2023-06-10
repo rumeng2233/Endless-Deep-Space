@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "endless_deep_space:diamond_pocket_knife"
+  },
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "item": "endless_deep_space:netherite_pocket_knife"
+  }
+}

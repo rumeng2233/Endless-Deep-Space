@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "endless_deep_space:geocentric_stone",
+    "endless_deep_space:raging_fire_ore",
+    "endless_deep_space:raging_fire_block",
+    "endless_deep_space:frozen_ore",
+    "endless_deep_space:frozen_block"
+  ]
+}

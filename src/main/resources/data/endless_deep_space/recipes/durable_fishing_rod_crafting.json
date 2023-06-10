@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  2",
+    " 45",
+    "678"
+  ],
+  "key": {
+    "2": {
+      "item": "minecraft:stick"
+    },
+    "4": {
+      "item": "minecraft:stick"
+    },
+    "5": {
+      "item": "minecraft:string"
+    },
+    "6": {
+      "item": "minecraft:stick"
+    },
+    "7": {
+      "item": "minecraft:string"
+    },
+    "8": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space.custom:durable_fishing_rod",
+    "count": 1
+  }
+}
