@@ -37,6 +37,12 @@ import org.stringtemplate.v4.ST;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nullable;
+import net.minecraft.sounds.Music;
+import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.client.resources.sounds.Sound;
 
 @OnlyIn(Dist.CLIENT)
 public class EndlessDeepSpaceCredits extends Screen {
@@ -44,13 +50,6 @@ public class EndlessDeepSpaceCredits extends Screen {
    private static final ResourceLocation LOGO_LOCATION = new ResourceLocation("textures/gui/title/minecraft.png");
    private static final ResourceLocation EDITION_LOCATION = new ResourceLocation("textures/gui/title/edition.png");
    private static final ResourceLocation VIGNETTE_LOCATION = new ResourceLocation("textures/misc/vignette.png");
-   private static final ResourceLocation POEM_BACKGROUND_LOCATION = new ResourceLocation("textures/gui/endless_deep_space_credits_background/poem.png");
-   private static final ResourceLocation BROKEN_BACKGROUND_LOCATION = new ResourceLocation("textures/gui/endless_deep_space_credits_background/broken.png");
-   private static final ResourceLocation DIRT_BACKGROUND_LOCATION = new ResourceLocation("textures/block/dirt.png");
-   private static final ResourceLocation STONE_BACKGROUND_LOCATION = new ResourceLocation("textures/block/stone.png");
-   private static final ResourceLocation END_STONE_BACKGROUND_LOCATION = new ResourceLocation("textures/block/end_stone.png");
-   private static final ResourceLocation NETHERRACK_BACKGROUND_LOCATION = new ResourceLocation("textures/block/netherrack.png");
-   private static final ResourceLocation 野兽先辈_BACKGROUND_LOCATION = new ResourceLocation("textures/gui/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.png");
    private static final Component SECTION_HEADING = Component.literal("============").withStyle(ChatFormatting.WHITE);
    private static final String NAME_PREFIX = "           ";
    private static final String OBFUSCATE_TOKEN = "" + ChatFormatting.WHITE + ChatFormatting.OBFUSCATED + ChatFormatting.GREEN + ChatFormatting.AQUA;
@@ -67,20 +66,32 @@ public class EndlessDeepSpaceCredits extends Screen {
    private final IntSet speedupModifiers = new IntOpenHashSet();
    private float scrollSpeed;
    private final float unmodifiedScrollSpeed;
-   private final String BGtype;
    private final boolean ShouldCloseOnEsc;
    private final boolean CanModifiedScrollSpeed;
+   public static SoundEvent music = SoundEvents.MUSIC_CREDITS;
+   public ResourceLocation BackgroundLocation;
 
-   public EndlessDeepSpaceCredits(String chapters, String BGtypes, float ScrollSpeed, boolean CanModifiedScrollSpeed, boolean shouldCloseOnEsc, Runnable p_96878_) {
+   public EndlessDeepSpaceCredits(String chapters, String BackgroundLocations, SoundEvent musics, float ScrollSpeed, boolean CanModifiedScrollSpeed, boolean shouldCloseOnEsc, Runnable p_96878_) {
       super(GameNarrator.NO_TITLE);
       if (this.minecraft == null) this.minecraft = Minecraft.getInstance();
+      if (this.music == null) this.music = musics;
+      music = musics;
+      setMusic(musics);
       this.chapter = chapters;
-      this.BGtype = BGtypes;
+      this.BackgroundLocation = new ResourceLocation(BackgroundLocations);
       this.onFinished = p_96878_;
       this.unmodifiedScrollSpeed = ScrollSpeed;
       this.scrollSpeed = this.unmodifiedScrollSpeed;
       this.CanModifiedScrollSpeed = CanModifiedScrollSpeed;
       this.ShouldCloseOnEsc = shouldCloseOnEsc;
+   }
+
+   public static void setMusic(SoundEvent soundevent) {
+   		if (EndlessDeepSpaceCredits.music == null) EndlessDeepSpaceCredits.music = soundevent;
+   }
+
+   public static Music GUI_MUSIC() {
+   		return new Music(EndlessDeepSpaceCredits.music, 0, 0, true);
    }
 
    private float calculateScrollSpeed() {
@@ -160,6 +171,9 @@ public class EndlessDeepSpaceCredits extends Screen {
          } else if ((this.chapter).equals("vanilla_poem_and_endless_deep_space_credits_and_credits")) {
            	this.wrapCreditsIO("texts/end.txt", this::addPoemFile);
            	this.wrapCreditsIO("texts/endless_deep_space.credits.json", this::addCreditsFile);
+         	this.wrapCreditsIO("texts/credits.json", this::addCreditsFile);
+           	this.wrapCreditsIO("texts/postcredits.txt", this::addPoemFile);
+         }	else if ((this.chapter).equals("vanilla_credits")) {
          	this.wrapCreditsIO("texts/credits.json", this::addCreditsFile);
            	this.wrapCreditsIO("texts/postcredits.txt", this::addPoemFile);
          } else if ((this.chapter).equals("credits")) {
@@ -297,23 +311,7 @@ public class EndlessDeepSpaceCredits extends Screen {
 
    private void renderBg() {
       RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-      if ((this.BGtype).equals("poem")) {
-      	RenderSystem.setShaderTexture(0, POEM_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("vanilla")) {
-      	RenderSystem.setShaderTexture(0, GuiComponent.BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("broken")) {
-      	RenderSystem.setShaderTexture(0, BROKEN_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("dirt")) {
-      	RenderSystem.setShaderTexture(0, DIRT_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("stone")) {
-      	RenderSystem.setShaderTexture(0, STONE_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("end_stone")) {
-      	RenderSystem.setShaderTexture(0, END_STONE_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("netherrack")) {
-      	RenderSystem.setShaderTexture(0, NETHERRACK_BACKGROUND_LOCATION);
-      } else if ((this.BGtype).equals("野兽先辈")) {
-      	RenderSystem.setShaderTexture(0, 野兽先辈_BACKGROUND_LOCATION);
-      }
+      RenderSystem.setShaderTexture(0, this.BackgroundLocation);
       int i = this.width;
       float f = -this.scroll * 0.5F;
       float f1 = (float)this.height - 0.5F * this.scroll;
