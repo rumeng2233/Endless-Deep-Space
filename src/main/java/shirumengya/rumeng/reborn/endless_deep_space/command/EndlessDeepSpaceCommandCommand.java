@@ -117,6 +117,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeaco
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon4Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon3Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon1Procedure;
+import shirumengya.rumeng.reborn.endless_deep_space.procedures.DisplayItemActivationCommandProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeaconProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeacon3Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeacon2Procedure;
@@ -175,8 +176,6 @@ import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyReducePr
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyAddRandomProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyAddProcedure;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -191,9 +190,9 @@ import net.minecraft.commands.arguments.blocks.BlockStateArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 
 @Mod.EventBusSubscriber
 public class EndlessDeepSpaceCommandCommand {
@@ -1942,7 +1941,19 @@ public class EndlessDeepSpaceCommandCommand {
 
 									SaturationReduceRandomProcedure.execute(arguments);
 									return 0;
-								})))))))))
+								}))))))).then(Commands.literal("DisplayItemActivation").then(Commands.argument("player", EntityArgument.players()).then(Commands.argument("itemstack", ItemArgument.item(event.getBuildContext())).executes(arguments -> {
+									ServerLevel world = arguments.getSource().getLevel();
+									double x = arguments.getSource().getPosition().x();
+									double y = arguments.getSource().getPosition().y();
+									double z = arguments.getSource().getPosition().z();
+									Entity entity = arguments.getSource().getEntity();
+									if (entity == null)
+										entity = FakePlayerFactory.getMinecraft(world);
+									Direction direction = entity.getDirection();
+
+									DisplayItemActivationCommandProcedure.execute(world, x, y, z, arguments, entity);
+									return 0;
+								}))))))
 						.then(Commands.literal("world").then(Commands.literal("block_state").then(Commands.argument("pos", BlockPosArgument.blockPos())
 								.then(Commands.literal("Boolean").then(Commands.argument("block_state", StringArgumentType.string()).then(Commands.argument("true_or_false", BoolArgumentType.bool()).executes(arguments -> {
 									ServerLevel world = arguments.getSource().getLevel();

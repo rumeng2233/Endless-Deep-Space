@@ -52,7 +52,7 @@ public class PlayEndPoemMessage {
 			return;
 		if (type == 0) {
 
-			PlayEndPoemAnXiaAnJianShiProcedure.execute();
+			PlayEndPoemAnXiaAnJianShiProcedure.execute(x, y, z, entity);
 		}
 	}
 

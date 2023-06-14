@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "endless_deep_space:logo"
+    },
+    "title": {
+      "translate": "advancements.open_endless_deep_space_credits.title"
+    },
+    "description": {
+      "translate": "advancements.open_endless_deep_space_credits.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "open_endless_deep_space_credits": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "endless_deep_space:endless_deep_space_all_root"
+}

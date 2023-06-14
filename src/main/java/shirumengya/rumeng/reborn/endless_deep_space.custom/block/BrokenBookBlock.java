@@ -49,6 +49,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.block.block_entity.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.*;
+import shirumengya.rumeng.reborn.endless_deep_space.init.*;
 import net.minecraft.util.RandomSource;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.client.Minecraft;
@@ -57,6 +59,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.*;
 import java.util.List;
 import java.util.Collections;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import com.google.common.util.concurrent.Runnables;
 
 public class BrokenBookBlock extends BaseEntityBlock {
 	public BrokenBookBlock() {
@@ -125,10 +130,36 @@ public class BrokenBookBlock extends BaseEntityBlock {
 		double hitY = hit.getLocation().y;
 		double hitZ = hit.getLocation().z;
 		Direction direction = hit.getDirection();
-		BrokenBookBlockRCProcedure.execute();
+		if (entity instanceof ServerPlayer _serverPlayer)
+		this.OpenBook((ServerPlayer)_serverPlayer);
 		world.destroyBlock(new BlockPos(x, y, z), false);
 		return InteractionResult.SUCCESS;
 	}
+
+	public void OpenBook(ServerPlayer player) {
+		if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(1), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(2), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(3), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(4), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(5), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(6), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(7), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(8), player);
+		} else if (Math.random() < 0.1) {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(9), player);
+		} else {
+			ModMessages.sendToPlayer(new BrokenBookOpenScreenS2CPacket(10), player);
+		}
+	}
+
 
 //	@OnlyIn(Dist.CLIENT)
 //	@Override

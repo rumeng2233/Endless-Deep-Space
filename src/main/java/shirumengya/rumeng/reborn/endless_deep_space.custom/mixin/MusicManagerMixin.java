@@ -22,6 +22,7 @@ RandomSource random = RandomSource.create();
 	@Overwrite
 	public void tick() {
       Music music = this.minecraft.getSituationalMusic();
+      if (music == null) music = Minecraft.getInstance().getSituationalMusic();
       if (this.currentMusic != null) {
          if (!music.getEvent().getLocation().equals(this.currentMusic.getLocation()) && music.replaceCurrentMusic()) {
             this.minecraft.getSoundManager().stop(this.currentMusic);

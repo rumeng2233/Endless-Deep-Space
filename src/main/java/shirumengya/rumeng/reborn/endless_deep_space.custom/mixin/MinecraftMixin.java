@@ -284,6 +284,8 @@ import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.sounds.SoundEvents;
+import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
@@ -311,7 +313,7 @@ ServerData currentServer;
    	  if (Calendar.getInstance().get(Calendar.MONTH) == 3 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1) {
          return EndlessDeepSpaceMusics.NEVER_GONNA_GIVE_YOU_UP;
    	  } else if (Minecraft.getInstance().screen instanceof EndlessDeepSpaceCredits) {
-         return Musics.CREDITS;
+         return EndlessDeepSpaceCredits.GUI_MUSIC();
       } else if (Minecraft.getInstance().screen instanceof WinScreen) {
          return Musics.CREDITS;
       } else if (Minecraft.getInstance().player != null) {
@@ -371,4 +373,5 @@ ServerData currentServer;
 
       return stringbuilder.toString();
    }
+
 }

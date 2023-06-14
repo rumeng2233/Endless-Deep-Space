@@ -31,7 +31,8 @@
 	"MusicManagerMixin",
 	"LevelRendererMixin",
 	"AnvilScreenMixin",
-	"LevelLoadingScreenMixin"
+	"LevelLoadingScreenMixin",
+	"WinScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

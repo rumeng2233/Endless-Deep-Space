@@ -39,7 +39,6 @@ import shirumengya.rumeng.reborn.endless_deep_space.item.EnderBowItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DiamondPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DetectorOfBrokenItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DddItem;
-import shirumengya.rumeng.reborn.endless_deep_space.item.DItem;
 import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -65,7 +64,6 @@ public class EndlessDeepSpaceModItems {
 	public static final RegistryObject<Item> DETECTOR_OF_BROKEN = REGISTRY.register("detector_of_broken", () -> new DetectorOfBrokenItem());
 	public static final RegistryObject<Item> ENDER_BOW = REGISTRY.register("ender_bow", () -> new EnderBowItem());
 	public static final RegistryObject<Item> LOGO = REGISTRY.register("logo", () -> new LogoItem());
-	public static final RegistryObject<Item> D = REGISTRY.register("d", () -> new DItem());
 	public static final RegistryObject<Item> MUSIC_DISC_THE_LOST = REGISTRY.register("music_disc_the_lost", () -> new TheLostItem());
 	public static final RegistryObject<Item> MUSIC_DISC_INTERTWINED = REGISTRY.register("music_disc_intertwined", () -> new IntertwinedItem());
 	public static final RegistryObject<Item> EYEBALL_ITEM = REGISTRY.register("eyeball_item", () -> new EyeballItemItem());

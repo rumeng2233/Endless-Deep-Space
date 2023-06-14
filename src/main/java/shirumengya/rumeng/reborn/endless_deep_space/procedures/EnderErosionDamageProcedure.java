@@ -7,6 +7,6 @@ public class EnderErosionDamageProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		entity.hurt(EndlessDeepSpaceDamageSource.ENDER_EROSION, (float) 1.3606829811137386e+210);
+		entity.hurt(EndlessDeepSpaceDamageSource.ENDER_EROSION, Float.MAX_VALUE);
 	}
 }
