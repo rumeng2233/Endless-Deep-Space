@@ -48,7 +48,7 @@ public class WitherestRenderer extends MobRenderer<WitherestEntity, WitherBossMo
          f -= ((float)i - p_116441_) / 220.0F * 0.5F;
       }
       if (p_116439_.WitherestDeathTime > 0) {
-      	f = 20.0F;
+      	f = 100.0F;
       }
       p_116440_.scale(f, f, f);
    }

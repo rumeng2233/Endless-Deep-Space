@@ -10,6 +10,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
 
 public class ThroughTheWallAnXiaAnJianShiProcedure {
 	public static void execute(Entity entity) {
@@ -42,7 +44,8 @@ public class ThroughTheWallAnXiaAnJianShiProcedure {
 						capability.syncPlayerVariables(entity);
 					});
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.through_the_wall.endless_deep_space.on"), Component.translatable(""), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.through_the_wall.endless_deep_space.on"), Component.translatable(""), 3000L, -11534256, -16777216), _serverPlayer);
 				}
 			} else {
 				{
@@ -52,12 +55,14 @@ public class ThroughTheWallAnXiaAnJianShiProcedure {
 						capability.syncPlayerVariables(entity);
 					});
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.through_the_wall.endless_deep_space.off"), Component.translatable(""), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.through_the_wall.endless_deep_space.off"), Component.translatable(""), 3000L, -11534256, -16777216), _serverPlayer);
 				}
 			}
 		} else {
 			ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-			EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.through_the_wall.endless_deep_space.error"), Component.translatable(""), 3000L, -65536, -16777216);
+			if (entity instanceof ServerPlayer _serverPlayer)
+			ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.through_the_wall.endless_deep_space.error"), Component.translatable(""), 3000L, -65536, -16777216), _serverPlayer);
 		}
 	}
 }

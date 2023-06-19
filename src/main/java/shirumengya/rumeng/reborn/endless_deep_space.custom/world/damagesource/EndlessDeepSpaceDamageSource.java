@@ -14,4 +14,7 @@ public class EndlessDeepSpaceDamageSource {
    	public static DamageSource WrathOfWither(@Nullable Entity p_19371_) {
       	return new EntityDamageSource("wrath_of_wither", p_19371_).bypassMagic().bypassEnchantments().bypassInvul();
    	}
+   	public static DamageSource ScreamingGhastFirball(@Nullable Entity p_19371_) {
+      	return new EntityDamageSource("screaming_ghast_firball", p_19371_).bypassMagic().bypassEnchantments().bypassInvul().bypassArmor();
+   	}
 }

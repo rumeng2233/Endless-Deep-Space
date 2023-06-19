@@ -16,6 +16,9 @@ import net.minecraft.world.item.ItemStack;
 import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModItems;
 import net.minecraft.world.entity.Entity;
 import javax.annotation.Nullable;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import net.minecraft.server.level.ServerPlayer;
 
 @Mod.EventBusSubscriber
 public class FirstInModTickProcedure {
@@ -40,8 +43,8 @@ public class FirstInModTickProcedure {
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-			EndlessDeepSpaceCommonToast.add(toastcomponent, (new ItemStack(EndlessDeepSpaceModItems.LOGO.get())), Component.translatable("advancements.endless_deep_space_all_root.title"), Component.translatable("advancements.endless_deep_space_all_root.descr"), 20000L, -256, -1);
+			if (entity instanceof ServerPlayer _serverPlayer)
+			ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonToastS2CPacket((new ItemStack(EndlessDeepSpaceModItems.LOGO.get())), Component.translatable("advancements.endless_deep_space_all_root.title"), Component.translatable("advancements.endless_deep_space_all_root.descr"), 20000L, -256, -1), _serverPlayer);
 		}
 	}
 }

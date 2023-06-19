@@ -4,7 +4,11 @@ license="CC BY-NC 4.0"
 
 [[mods]]
 modId="endless_deep_space"
+<<<<<<< Updated upstream
 version="0.0.00013886"
+=======
+version="0.0.00013888"
+>>>>>>> Stashed changes
 displayName="Endless Deep Space"
 credits="Created using mod maker MCreator - https://mcreator.net/about"
 displayURL="https://space.bilibili.com/375078257"

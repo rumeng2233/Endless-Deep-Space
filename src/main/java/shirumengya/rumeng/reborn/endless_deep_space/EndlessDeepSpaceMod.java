@@ -86,7 +86,11 @@ import java.util.Locale;
 public class EndlessDeepSpaceMod {
 	public static final Logger LOGGER = LogManager.getLogger(EndlessDeepSpaceMod.class);
 	public static final String MODID = "endless_deep_space";
+<<<<<<< Updated upstream
 	public static final String Version = "0.0.00013886";
+=======
+	public static final String Version = "0.0.00013888";
+>>>>>>> Stashed changes
 
 	public EndlessDeepSpaceMod() {
 		MinecraftForge.EVENT_BUS.register(this);

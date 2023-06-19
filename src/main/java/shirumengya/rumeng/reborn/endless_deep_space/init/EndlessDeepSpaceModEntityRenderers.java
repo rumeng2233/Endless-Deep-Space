@@ -6,9 +6,9 @@ package shirumengya.rumeng.reborn.endless_deep_space.init;
 
 import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.WitherestRenderer;
 import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.StoneRenderer;
+import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.ScreamingGhastRenderer;
 import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.MadWitchRenderer;
 import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.IRenderer;
-import shirumengya.rumeng.reborn.endless_deep_space.client.renderer.GhastlierRenderer;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,6 +26,6 @@ public class EndlessDeepSpaceModEntityRenderers {
 		event.registerEntityRenderer(EndlessDeepSpaceModEntities.I.get(), IRenderer::new);
 		event.registerEntityRenderer(EndlessDeepSpaceModEntities.MAD_WITCH.get(), MadWitchRenderer::new);
 		event.registerEntityRenderer(EndlessDeepSpaceModEntities.ENDER_BOW.get(), ThrownItemRenderer::new);
-		event.registerEntityRenderer(EndlessDeepSpaceModEntities.GHASTLIER.get(), GhastlierRenderer::new);
+		event.registerEntityRenderer(EndlessDeepSpaceModEntities.SCREAMING_GHAST.get(), ScreamingGhastRenderer::new);
 	}
 }

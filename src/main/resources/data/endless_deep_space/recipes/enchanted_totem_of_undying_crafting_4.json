@@ -1,0 +1,19 @@
+{
+	"group": "enchanted_totem_of_undying_crafting",
+  	"type": "minecraft:crafting_shapeless",
+  	"ingredients": [
+    {
+      	"type": "forge:partial_nbt",
+      	"item": "endless_deep_space:enchanted_totem_of_undying",
+      	"nbt": "{Damage:9, RestoreHealth:5}"
+    },
+    {
+      	"item": "minecraft:totem_of_undying"
+    }
+  	],
+  	"result": {
+  		"type": "forge:partial_nbt",
+    	"item": "endless_deep_space:enchanted_totem_of_undying",
+    	"nbt": "{RestoreHealth:5}"
+  	}
+}

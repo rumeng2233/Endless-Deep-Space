@@ -23,6 +23,8 @@ public class ProjectileInit {
 			EntityType.Builder.<EnderDragonWindBomb>of(EnderDragonWindBomb::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(8.0f, 8.0f));
 	public static final RegistryObject<EntityType<PenetratingBowArrow>> PENETRATING_BOW_ARROW = register("penetrating_bow_arrow",
 			EntityType.Builder.<PenetratingBowArrow>of(PenetratingBowArrow::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<ScreamingGhastFirball>> SCREAMING_GHAST_FIRBALL = register("screaming_ghast_firball",
+			EntityType.Builder.<ScreamingGhastFirball>of(ScreamingGhastFirball::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.0f, 1.0f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

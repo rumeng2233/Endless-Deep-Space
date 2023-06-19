@@ -168,7 +168,11 @@ private static TargetingConditions TARGETING_CONDITIONS;
             this.setShield(0);
             if (boss.isPowered()) {
                this.bossEvent.setColor(BossEvent.BossBarColor.PURPLE);
-               this.bossEvent.setCreateWorldFog(true);
+               if (boss.isDeadOrDying()) {
+               		this.bossEvent.setCreateWorldFog(false);
+               } else {
+               		this.bossEvent.setCreateWorldFog(true);
+               }
             } else {
                this.bossEvent.setColor(BossEvent.BossBarColor.PINK);
                this.bossEvent.setCreateWorldFog(false);

@@ -36,6 +36,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.item.FpsItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EyeballItemItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EnderBowItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.EnchantedTotemOfUndyingItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DiamondPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DetectorOfBrokenItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DddItem;
@@ -112,8 +113,9 @@ public class EndlessDeepSpaceModItems {
 	public static final RegistryObject<Item> DDD = REGISTRY.register("ddd", () -> new DddItem());
 	public static final RegistryObject<Item> LAVA_ABSORBER = block(EndlessDeepSpaceModBlocks.LAVA_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 	public static final RegistryObject<Item> WATER_ABSORBER = block(EndlessDeepSpaceModBlocks.WATER_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
-	public static final RegistryObject<Item> GHASTLIER_SPAWN_EGG = REGISTRY.register("ghastlier_spawn_egg",
-			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.GHASTLIER, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
+	public static final RegistryObject<Item> ENCHANTED_TOTEM_OF_UNDYING = REGISTRY.register("enchanted_totem_of_undying", () -> new EnchantedTotemOfUndyingItem());
+	public static final RegistryObject<Item> SCREAMING_GHAST_SPAWN_EGG = REGISTRY.register("screaming_ghast_spawn_egg",
+			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.SCREAMING_GHAST, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

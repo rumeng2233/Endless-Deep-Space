@@ -31,7 +31,13 @@
 	"MusicManagerMixin",
 	"LevelRendererMixin",
 	"AnvilScreenMixin",
+<<<<<<< Updated upstream
 	"LevelLoadingScreenMixin"
+=======
+	"LevelLoadingScreenMixin",
+	"WinScreenMixin",
+	"RenderBuffersMixin"
+>>>>>>> Stashed changes
   ],
   "injectors": {
     "defaultRequire": 1

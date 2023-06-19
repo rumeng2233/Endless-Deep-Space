@@ -147,6 +147,9 @@ import net.minecraft.world.scores.PlayerTeam;
 import org.slf4j.Logger;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraft.world.entity.HumanoidArm;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import shirumengya.rumeng.reborn.endless_deep_space.item.*;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
@@ -212,11 +215,66 @@ public class LivingEntityMixin {
             }
             livingEntity.setHealth(1.0F);
             livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
             livingEntity.level.broadcastEntityEvent(livingEntity, (byte)35);
             info.setReturnValue(true);
         }
+        
+        ItemStack itemstack = null;
+		if (livingEntity instanceof Player) {
+         for(InteractionHand interactionhand : InteractionHand.values()) {
+            ItemStack itemstack1 = livingEntity.getItemInHand(interactionhand);
+            if (livingEntity instanceof Player _player)
+            if (itemstack1.is(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()) && (_player.getCooldowns().isOnCooldown(itemstack1.getItem()) == false) && (((itemstack1).getMaxDamage() - (itemstack1).getDamageValue()) > 0)) {
+               itemstack = itemstack1.copy();
+               itemstack1.hurt(1, RandomSource.create(), null);
+               if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack1) <= 0) {
+               		EnchantedTotemOfUndyingItem.setRestoreHealth(itemstack1, 1);
+               }
+               _player.getCooldowns().addCooldown(itemstack1.getItem(), 195);
+               _player.stopUsingItem();
+               break;
+            }
+         }
+		}
+
+		if (!(livingEntity instanceof Player)) {
+         for(InteractionHand interactionhand : InteractionHand.values()) {
+            ItemStack itemstack1 = livingEntity.getItemInHand(interactionhand);
+            if (itemstack1.is(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()) && (((itemstack1).getMaxDamage() - (itemstack1).getDamageValue()) > 0)) {
+               itemstack = itemstack1.copy();
+               itemstack1.hurt(1, RandomSource.create(), null);
+               if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack1) <= 0) {
+               		EnchantedTotemOfUndyingItem.setRestoreHealth(itemstack1, 1);
+               }
+               break;
+            }
+         }
+		}
+
+         if (itemstack != null) {
+            if (livingEntity instanceof ServerPlayer) {
+               ServerPlayer serverplayer = (ServerPlayer)livingEntity;
+               serverplayer.awardStat(Stats.ITEM_USED.get(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()));
+               CriteriaTriggers.USED_TOTEM.trigger(serverplayer, itemstack);
+               ModMessages.sendToPlayer(new CommonDisplayItemActivationS2CPacket(itemstack), serverplayer);
+            }
+
+            if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack) <= 0) {
+            	livingEntity.setHealth(1);
+            } else {
+            	livingEntity.setHealth((float)EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack));
+            }
+            livingEntity.removeAllEffects();
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
+            livingEntity.addEffect(new MobEffectInstance(EndlessDeepSpaceModMobEffects.TOTEM_OF_UNDYING.get(), 200, 0));
+            livingEntity.level.broadcastEntityEvent(livingEntity, (byte)35);
+            info.setReturnValue(true);
+         }
+         
     }
 
     @Inject(method = {"createLivingAttributes"}, at = {@At("HEAD")}, cancellable = true)
