@@ -35,23 +35,27 @@ public class EnderDragonWindBomb extends AbstractHurtingProjectile {
 
    public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-		boolean flag = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING);
-       	this.level.explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), (float)15.0F, false, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
-       	if (entityHitResult.getEntity() instanceof LivingEntity _entity)
-       	if (this.getOwner() != null) {
-       		_entity.hurt(new EntityDamageSource("ender_dragon_wind_bomb", this.getOwner()).bypassMagic().bypassEnchantments().bypassInvul().bypassArmor(), Float.MAX_VALUE);
-       	} else {
-       		_entity.hurt(new EntityDamageSource("ender_dragon_wind_bomb", _entity).bypassMagic().bypassEnchantments().bypassInvul().bypassArmor(), Float.MAX_VALUE);
-       	}
-       	entityHitResult.getEntity().setDeltaMovement(new Vec3(0, 2, 0));
-       	this.discard();
+		if (!this.level.isClientSide) {
+			boolean flag = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING);
+       		this.level.explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), (float)15.0F, false, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
+       		if (entityHitResult.getEntity() instanceof LivingEntity _entity)
+       		if (this.getOwner() != null) {
+       			_entity.hurt(new EntityDamageSource("ender_dragon_wind_bomb", this.getOwner()).bypassMagic().bypassEnchantments().bypassInvul().bypassArmor(), Float.MAX_VALUE);
+       		} else {
+       			_entity.hurt(new EntityDamageSource("ender_dragon_wind_bomb", _entity).bypassMagic().bypassEnchantments().bypassInvul().bypassArmor(), Float.MAX_VALUE);
+       		}
+       		entityHitResult.getEntity().setDeltaMovement(new Vec3(0, 2, 0));
+       		this.discard();
+		}
    }
 
 	public void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
-		boolean flag = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING);
-		this.level.explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), (float)15.0F, false, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
-		this.discard();
+		if (!this.level.isClientSide) {
+			boolean flag = this.level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING);
+			this.level.explode(this.getOwner(), this.getX(), this.getY(), this.getZ(), (float)15.0F, false, flag ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.NONE);
+			this.discard();
+		}
 	}
 
    public boolean isPickable() {

@@ -5,6 +5,7 @@
 package shirumengya.rumeng.reborn.endless_deep_space.init;
 
 import shirumengya.rumeng.reborn.endless_deep_space.item.WoodenPocketKnifeItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.TrackingArrowItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.TotemSwordItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.TheLostItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.StonePocketKnifeItem;
@@ -33,13 +34,10 @@ import shirumengya.rumeng.reborn.endless_deep_space.item.FrozenDustItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FrozenAxeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FrozenArmorItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FpsItem;
-import shirumengya.rumeng.reborn.endless_deep_space.item.FItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EyeballItemItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EnderBowItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DiamondPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DetectorOfBrokenItem;
-import shirumengya.rumeng.reborn.endless_deep_space.item.DddItem;
-import shirumengya.rumeng.reborn.endless_deep_space.item.DItem;
 import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -65,7 +63,6 @@ public class EndlessDeepSpaceModItems {
 	public static final RegistryObject<Item> DETECTOR_OF_BROKEN = REGISTRY.register("detector_of_broken", () -> new DetectorOfBrokenItem());
 	public static final RegistryObject<Item> ENDER_BOW = REGISTRY.register("ender_bow", () -> new EnderBowItem());
 	public static final RegistryObject<Item> LOGO = REGISTRY.register("logo", () -> new LogoItem());
-	public static final RegistryObject<Item> D = REGISTRY.register("d", () -> new DItem());
 	public static final RegistryObject<Item> MUSIC_DISC_THE_LOST = REGISTRY.register("music_disc_the_lost", () -> new TheLostItem());
 	public static final RegistryObject<Item> MUSIC_DISC_INTERTWINED = REGISTRY.register("music_disc_intertwined", () -> new IntertwinedItem());
 	public static final RegistryObject<Item> EYEBALL_ITEM = REGISTRY.register("eyeball_item", () -> new EyeballItemItem());
@@ -107,13 +104,18 @@ public class EndlessDeepSpaceModItems {
 	public static final RegistryObject<Item> FROZEN_ARMOR_BOOTS = REGISTRY.register("frozen_armor_boots", () -> new FrozenArmorItem.Boots());
 	public static final RegistryObject<Item> FROZEN_POCKET_KNIFE = REGISTRY.register("frozen_pocket_knife", () -> new FrozenPocketKnifeItem());
 	public static final RegistryObject<Item> PENETRATING_BOW = REGISTRY.register("penetrating_bow", () -> new PenetratingBowItem());
-	public static final RegistryObject<Item> F = REGISTRY.register("f", () -> new FItem());
 	public static final RegistryObject<Item> TOTEM_SWORD = REGISTRY.register("totem_sword", () -> new TotemSwordItem());
-	public static final RegistryObject<Item> DDD = REGISTRY.register("ddd", () -> new DddItem());
 	public static final RegistryObject<Item> LAVA_ABSORBER = block(EndlessDeepSpaceModBlocks.LAVA_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 	public static final RegistryObject<Item> WATER_ABSORBER = block(EndlessDeepSpaceModBlocks.WATER_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+<<<<<<< Updated upstream
 	public static final RegistryObject<Item> GHASTLIER_SPAWN_EGG = REGISTRY.register("ghastlier_spawn_egg",
 			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.GHASTLIER, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
+=======
+	public static final RegistryObject<Item> ENCHANTED_TOTEM_OF_UNDYING = REGISTRY.register("enchanted_totem_of_undying", () -> new EnchantedTotemOfUndyingItem());
+	public static final RegistryObject<Item> SCREAMING_GHAST_SPAWN_EGG = REGISTRY.register("screaming_ghast_spawn_egg",
+			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.SCREAMING_GHAST, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
+	public static final RegistryObject<Item> TRACKING_ARROW = REGISTRY.register("tracking_arrow", () -> new TrackingArrowItem());
+>>>>>>> Stashed changes
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

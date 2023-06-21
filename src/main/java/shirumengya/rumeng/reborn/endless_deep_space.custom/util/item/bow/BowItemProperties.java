@@ -12,6 +12,7 @@ public class BowItemProperties {
         makeBow(ItemInit.DURABLE_BOW.get());
         makeBow(EndlessDeepSpaceModItems.ENDER_BOW.get());
         makeBow(EndlessDeepSpaceModItems.PENETRATING_BOW.get());
+        makeBow(EndlessDeepSpaceModItems.TRACKING_ARROW.get());
     }
 
     private static void makeBow(Item item) {

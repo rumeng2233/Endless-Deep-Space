@@ -284,6 +284,8 @@ import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.warden.Warden;
+import net.minecraft.sounds.SoundEvents;
+import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
@@ -311,7 +313,7 @@ ServerData currentServer;
    	  if (Calendar.getInstance().get(Calendar.MONTH) == 3 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1) {
          return EndlessDeepSpaceMusics.NEVER_GONNA_GIVE_YOU_UP;
    	  } else if (Minecraft.getInstance().screen instanceof EndlessDeepSpaceCredits) {
-         return Musics.CREDITS;
+         return EndlessDeepSpaceCredits.GUI_MUSIC();
       } else if (Minecraft.getInstance().screen instanceof WinScreen) {
          return Musics.CREDITS;
       } else if (Minecraft.getInstance().player != null) {
@@ -322,7 +324,8 @@ ServerData currentServer;
       	  if (!Minecraft.getInstance().player.level.getEntitiesOfClass(MadWitchEntity.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 256, 256, 256), e -> true).isEmpty()
       	  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(WitherestEntity.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 256, 256, 256), e -> true).isEmpty()
       	  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(WitherBoss.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 76, 76, 76), e -> true).isEmpty()
-      	  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(Ghast.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 100, 100, 100), e -> true).isEmpty()) {
+      	  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(Ghast.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 100, 100, 100), e -> true).isEmpty()
+      	  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(ScreamingGhastEntity.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 256, 256, 256), e -> true).isEmpty()) {
          	return EndlessDeepSpaceMusics.MINECRAFT_MUSIC_BIOME_NETHER_WASTES;
       	  } 
       	  if (Minecraft.getInstance().player.level.dimension() == Level.END) {
@@ -371,4 +374,5 @@ ServerData currentServer;
 
       return stringbuilder.toString();
    }
+
 }

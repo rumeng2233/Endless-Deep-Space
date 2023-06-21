@@ -28,9 +28,11 @@ public class HeavyFogStepProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
 		if (EndlessDeepSpaceModVariables.MapVariables.get(world).heavy_fog_time < 6000) {
-			if (Math.random() < 0.00002) {
-				EndlessDeepSpaceModVariables.MapVariables.get(world).heavy_fog_time = EndlessDeepSpaceModVariables.MapVariables.get(world).heavy_fog_time + Mth.nextInt(RandomSource.create(), 3600, 6000);
-				EndlessDeepSpaceModVariables.MapVariables.get(world).syncData(world);
+			if (world.isClientSide() == false) {
+				if (Math.random() < 0.00002) {
+					EndlessDeepSpaceModVariables.MapVariables.get(world).heavy_fog_time = EndlessDeepSpaceModVariables.MapVariables.get(world).heavy_fog_time + Mth.nextInt(RandomSource.create(), 3600, 6000);
+					EndlessDeepSpaceModVariables.MapVariables.get(world).syncData(world);
+				}
 			}
 		}
 	}

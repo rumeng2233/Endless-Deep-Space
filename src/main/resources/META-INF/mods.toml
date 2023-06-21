@@ -4,15 +4,16 @@ license="CC BY-NC 4.0"
 
 [[mods]]
 modId="endless_deep_space"
+<<<<<<< Updated upstream
 version="0.0.00013886"
+=======
+version="0.0.00013889"
+>>>>>>> Stashed changes
 displayName="Endless Deep Space"
 credits="Created using mod maker MCreator - https://mcreator.net/about"
 displayURL="https://space.bilibili.com/375078257"
 logoFile="logo.png"
 authors="是如梦呀rumeng2233, MCreator"
-description='''
-attributefix
-'''
 
 [[dependencies.endless_deep_space]]
     modId="minecraft"
@@ -22,6 +23,12 @@ attributefix
     side="BOTH"
 
 
+[[dependencies.endless_deep_space]]
+    modId="attributefix"
+    mandatory=true
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.endless_deep_space]]
     modId="allmods"

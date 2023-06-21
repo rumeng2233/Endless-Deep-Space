@@ -18,6 +18,13 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.DimensionSpecialEffectsManager;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import shirumengya.rumeng.reborn.endless_deep_space.item.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.item.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.init.*;
+import net.minecraft.world.item.BowItem;
 
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = EndlessDeepSpaceMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)

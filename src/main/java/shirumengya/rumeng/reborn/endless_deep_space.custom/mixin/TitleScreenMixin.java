@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.OutOfMemoryScreen;
-import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.EndlessDeepSpaceCredits;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.*;
 import com.google.common.util.concurrent.Runnables;
 import java.util.Calendar;
 import net.minecraft.Util;
@@ -71,7 +71,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.slf4j.Logger;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.sounds.SoundEvents;
-
+import shirumengya.rumeng.reborn.endless_deep_space.init.*;
+import net.minecraft.sounds.SoundEvent;
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin extends Screen {
 	private static final Component EDS_COPYRIGHT_TEXT = Component.literal("Copyright 是如梦呀rumeng2233");
@@ -80,6 +81,7 @@ public class TitleScreenMixin extends Screen {
 	public TitleScreenMixin() {
 		super(Component.translatable("narrator.screen.title"));
 	}
+	
 	@Inject(method = {"init"}, at = {@At("HEAD")}, cancellable = true)
 	protected void init(CallbackInfo info) {
 		int i = this.font.width(EDS_COPYRIGHT_TEXT);
@@ -87,7 +89,15 @@ public class TitleScreenMixin extends Screen {
       	int k = this.font.width(MENU_MUSIC_FROM_TEXT);
       	int l = this.width - k - 2;
 		this.addRenderableWidget(new PlainTextButton(j, this.height - 30, i, 10, EDS_COPYRIGHT_TEXT, (p_211790_) -> {
-        	this.minecraft.setScreen(new EndlessDeepSpaceCredits("credits_and_postcredits", "poem", 0.75F, true, true, Runnables.doNothing()));
+			if (Calendar.getInstance().get(Calendar.MONTH) == 8 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 28) {
+				this.minecraft.setScreen(new EndlessDeepSpaceCredits("credits_and_postcredits", "textures/gui/endless_deep_space_credits_background/poem.png", EndlessDeepSpaceModSounds.GENSHIN_IMPACT_MAIN_THEME.get(), 0.75F, true, true, () -> {
+					this.minecraft.setScreen(this);
+				}));
+			} else {
+        		this.minecraft.setScreen(new EndlessDeepSpaceCredits("credits_and_postcredits", "textures/gui/endless_deep_space_credits_background/poem.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+					this.minecraft.setScreen(this);
+				}));
+			}
 //        	this.minecraft.setScreen(new OutOfMemoryScreen());
       	 	}, this.font));
       	if (Calendar.getInstance().get(Calendar.MONTH) == 8 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 28) {

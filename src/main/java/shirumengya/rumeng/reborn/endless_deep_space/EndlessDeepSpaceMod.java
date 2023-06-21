@@ -26,6 +26,8 @@ import shirumengya.rumeng.reborn.endless_deep_space.custom.init.CreativeModeTabI
 import shirumengya.rumeng.reborn.endless_deep_space.custom.init.entity.projectile.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.init.entity.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.init.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.*;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.NetworkEvent;
@@ -81,12 +83,17 @@ import shirumengya.rumeng.reborn.endless_deep_space.custom.recipe.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.fishing_rod.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.crossbow.*;
 import java.util.Locale;
+import net.minecraft.sounds.Music;
 
 @Mod("endless_deep_space")
 public class EndlessDeepSpaceMod {
 	public static final Logger LOGGER = LogManager.getLogger(EndlessDeepSpaceMod.class);
 	public static final String MODID = "endless_deep_space";
+<<<<<<< Updated upstream
 	public static final String Version = "0.0.00013886";
+=======
+	public static final String Version = "0.0.00013889";
+>>>>>>> Stashed changes
 
 	public EndlessDeepSpaceMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -199,6 +206,7 @@ public class EndlessDeepSpaceMod {
         event.enqueueWork(() -> {
             EndlessDeepSpaceCustomVillagers.registerPOIs();
         });
+        ModMessages.register();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

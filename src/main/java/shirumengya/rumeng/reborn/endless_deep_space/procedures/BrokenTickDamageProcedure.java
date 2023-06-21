@@ -7,6 +7,6 @@ public class BrokenTickDamageProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		entity.hurt(EndlessDeepSpaceDamageSource.BROKEN_VALUE, (float) Double.POSITIVE_INFINITY);
+		entity.hurt(EndlessDeepSpaceDamageSource.BROKEN_VALUE, Float.MAX_VALUE);
 	}
 }

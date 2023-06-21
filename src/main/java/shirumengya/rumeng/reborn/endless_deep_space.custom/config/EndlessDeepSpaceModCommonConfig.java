@@ -20,6 +20,7 @@ public class EndlessDeepSpaceModCommonConfig {
     public static final ForgeConfigSpec.ConfigValue<Integer> FILL_BIG_MAX_FILL_AREA;
     public static final ForgeConfigSpec.ConfigValue<Integer> CLONE_BIG_MAX_CLONE_AREA;
     public static final ForgeConfigSpec.ConfigValue<Integer> GIVE_MORE_MAX_FILL_AREA;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> SCREAMING_GHAST_CANNOT_REGENERATE_HEALTH;
 
     static {
         BUILDER.push("Endless Deep Space Mod Common Config");
@@ -68,6 +69,9 @@ public class EndlessDeepSpaceModCommonConfig {
 
         GIVE_MORE_MAX_FILL_AREA = BUILDER.comment("The give_more command max give area")
                 .define("give_more command max give area", 100);
+
+         SCREAMING_GHAST_CANNOT_REGENERATE_HEALTH = BUILDER.comment("If disabled, the Screaming Ghast will be able to restore health")
+                .define("Screaming Ghast cannot regenerate health", true);
         
         BUILDER.pop();
         SPEC = BUILDER.build();

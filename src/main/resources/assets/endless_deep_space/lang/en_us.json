@@ -5,6 +5,10 @@
   "message.fly.endless_deep_space.on": "Fly is on",
   "block.endless_deep_space.custom.transparent_sign": "Transparent Sign",
   "effect.endless_deep_space.man_machine_separation": "Man-machine separation",
+<<<<<<< Updated upstream
+=======
+  "commands.endless_deep_space_credits.success.multiple": "Sent a packet to open the EndlessDeepSpaceCredits screen to the client of %s players",
+>>>>>>> Stashed changes
   "block.endless_deep_space.custom.nihility_block": "Nihility",
   "key.endless_deep_space.through_the_wall": "Through The Wall",
   "subtitles.genshin_impact_main_theme": "",
@@ -28,6 +32,7 @@
   "subtitles.music_disc.endless_deep_space.intertwined": "",
   "subtitles.never_gonna_give_you_up": "",
   "effect.endless_deep_space.visual_impairment": "Visual Impairment",
+  "entity.endless_deep_space.custom.tracking_arrow": "Tracking Arrow",
   "multiplayer.disconnect.die_in_hardcore_4": "Oh - I know what I did wrong!",
   "entity.minecraft.villager.endless_deep_space.custom.dimension_traveler": "Dimension Traveler",
   "multiplayer.disconnect.die_in_hardcore_5": "Everything\u0027s going to plan. No, really, that was supposed to happen.",
@@ -43,6 +48,7 @@
   "endless_deep_space.attribute.heal_unable": "Heal Unable",
   "advancements.add_the_end.title": "You need to prepare some ender erosion protection potion",
   "item.minecraft.potion.effect.ender_erosion_protection_potiom_medium": "Potion of Ender Erosion Protection",
+  "entity.endless_deep_space.custom.screaming_ghast_magic_bullet": "Screaming Ghast Magic Bullet",
   "item.endless_deep_space.detector_of_broken.available_times": "Available Times:",
   "message.through_the_wall.endless_deep_space.error": "You do not have permission to turn through the wall on or off!",
   "item.endless_deep_space.detector_of_broken.message.bind_detector_of_broken.off": "Unbound",
@@ -111,7 +117,6 @@
   "enchantment.endless_deep_space.better_sharpness": "Better Sharpness",
   "endless_deep_space.attribute.damage_reduction": "Damage Reduction",
   "enchantment.endless_deep_space.best_sharpness.info": "Best Sharpness enchantment can only be obtained in creative mode or using commands",
-  "item.endless_deep_space.ddd": "Ddd",
   "options.endless_deep_space.credits": "Endless Deep Space Mod Credits",
   "item.endless_deep_space.guide_book": "Endless Deep Space Mod Guide Book",
   "advancements.endless_deep_space_all_root.descr": "The beginning of it all",
@@ -122,6 +127,7 @@
   "go_to_nihility_toast_descr": "你终将归于虚无",
   "block.endless_deep_space.custom.blue_green_guiding_stone": "Blue Green Guiding Stone",
   "block.endless_deep_space.custom.light_gray_guiding_stone": "Light Gray Guiding Stone",
+  "item.endless_deep_space.tracking_arrow": "Tracking Bow",
   "item.minecraft.splash_potion.effect.damage_increase_potion": "Splash Potion of Damage Increase",
   "item.endless_deep_space.raging_fire_armor_boots": "Raging Fire Boots",
   "block.endless_deep_space.custom.broken_beacon": "Broken Beacon",
@@ -177,9 +183,12 @@
   "block.endless_deep_space.custom.pure_black_guiding_stone": "Pure Black Guiding Stone",
   "enchantment.endless_deep_space.damage_increase": "Damage Increase",
   "entity.endless_deep_space.custom.penetrating_bow_arrow": "Penetrating Bow Arrow",
-  "item.endless_deep_space.f": "F",
   "item.minecraft.potion.effect.damage_increase_potion": "Potion of Damage Increase",
+<<<<<<< Updated upstream
   "item.endless_deep_space.d": "D",
+=======
+  "entity.endless_deep_space.screaming_ghast": "Screaming Ghast",
+>>>>>>> Stashed changes
   "block.endless_deep_space.custom.star_cube_end_portal": "Star Cube",
   "enchantment.endless_deep_space.sharpness_weakened": "Sharpness Weakened",
   "endless_deep_space.attribute.damage_protection_time": "Damage Protection Time",
@@ -223,6 +232,7 @@
   "item.endless_deep_space.frozen_armor_helmet": "Frozen Helmet",
   "item.endless_deep_space.logo": "Logo",
   "block.endless_deep_space.custom.gray_guiding_stone": "Gray Guiding Stone",
+  "entity.endless_deep_space.custom.screaming_ghast_gravity_bomb": "Screaming Ghast Gravity Bomb",
   "multiplayer.disconnect.die_in_hardcore_10": "I just don\u0027t know what went wrong :(",
   "entity.endless_deep_space.ghastlier": "Ghastlier",
   "death.attack.wrath_of_wither": "%1$s burned to ashes under %2$s wrath of wither",

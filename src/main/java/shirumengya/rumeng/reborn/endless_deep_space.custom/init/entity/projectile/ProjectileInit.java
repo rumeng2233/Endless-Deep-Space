@@ -23,6 +23,17 @@ public class ProjectileInit {
 			EntityType.Builder.<EnderDragonWindBomb>of(EnderDragonWindBomb::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(8.0f, 8.0f));
 	public static final RegistryObject<EntityType<PenetratingBowArrow>> PENETRATING_BOW_ARROW = register("penetrating_bow_arrow",
 			EntityType.Builder.<PenetratingBowArrow>of(PenetratingBowArrow::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+<<<<<<< Updated upstream
+=======
+	public static final RegistryObject<EntityType<ScreamingGhastFirball>> SCREAMING_GHAST_FIRBALL = register("screaming_ghast_firball",
+			EntityType.Builder.<ScreamingGhastFirball>of(ScreamingGhastFirball::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.0f, 1.0f));
+	public static final RegistryObject<EntityType<ScreamingGhastMagicBullet>> SCREAMING_GHAST_MAGIC_BULLET = register("screaming_ghast_magic_bullet",
+			EntityType.Builder.<ScreamingGhastMagicBullet>of(ScreamingGhastMagicBullet::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.3125f, 0.3125f));
+	public static final RegistryObject<EntityType<TrackingArrow>> TRACKING_ARROW = register("tracking_arrow",
+			EntityType.Builder.<TrackingArrow>of(TrackingArrow::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<ScreamingGhastGravityBomb>> SCREAMING_GHAST_GRAVITY_BOMB = register("screaming_ghast_gravity_bomb",
+			EntityType.Builder.<ScreamingGhastGravityBomb>of(ScreamingGhastGravityBomb::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+>>>>>>> Stashed changes
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

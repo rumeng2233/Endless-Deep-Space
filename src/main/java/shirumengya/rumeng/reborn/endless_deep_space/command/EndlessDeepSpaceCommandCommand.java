@@ -117,6 +117,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeaco
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon4Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon3Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.EmeraldBlockBeacon1Procedure;
+import shirumengya.rumeng.reborn.endless_deep_space.procedures.DisplayItemActivationCommandProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeaconProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeacon3Procedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.DiamondBlockBeacon2Procedure;
@@ -175,8 +176,6 @@ import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyReducePr
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyAddRandomProcedure;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.AirsupplyAddProcedure;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -191,9 +190,9 @@ import net.minecraft.commands.arguments.blocks.BlockStateArgument;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.Commands;
 
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 
 @Mod.EventBusSubscriber
 public class EndlessDeepSpaceCommandCommand {
@@ -1753,6 +1752,7 @@ public class EndlessDeepSpaceCommandCommand {
 
 															DeltaMovementReduceProcedure.execute(arguments);
 															return 0;
+<<<<<<< Updated upstream
 														}))))
 														.then(Commands.literal("random")
 																.then(Commands.argument("vxMax", DoubleArgumentType.doubleArg())
@@ -2106,6 +2106,9 @@ public class EndlessDeepSpaceCommandCommand {
 													return 0;
 												})))).then(Commands.literal("random").then(Commands.argument("max", DoubleArgumentType.doubleArg())
 														.then(Commands.argument("min", DoubleArgumentType.doubleArg()).then(Commands.argument("fire", BoolArgumentType.bool()).then(Commands.literal("break").executes(arguments -> {
+=======
+														})).then(Commands.literal("random").then(Commands.argument("max", DoubleArgumentType.doubleArg()).then(Commands.argument("min", DoubleArgumentType.doubleArg()).executes(arguments -> {
+>>>>>>> Stashed changes
 															ServerLevel world = arguments.getSource().getLevel();
 															double x = arguments.getSource().getPosition().x();
 															double y = arguments.getSource().getPosition().y();
