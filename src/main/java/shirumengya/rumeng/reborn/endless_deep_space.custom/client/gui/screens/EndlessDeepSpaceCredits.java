@@ -37,6 +37,16 @@ import org.stringtemplate.v4.ST;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import javax.annotation.Nullable;
+<<<<<<< Updated upstream
+=======
+import net.minecraft.sounds.Music;
+import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.client.gui.screens.WinScreen;
+>>>>>>> Stashed changes
 
 @OnlyIn(Dist.CLIENT)
 public class EndlessDeepSpaceCredits extends Screen {
@@ -75,7 +85,15 @@ public class EndlessDeepSpaceCredits extends Screen {
       super(GameNarrator.NO_TITLE);
       if (this.minecraft == null) this.minecraft = Minecraft.getInstance();
       this.chapter = chapters;
+<<<<<<< Updated upstream
       this.BGtype = BGtypes;
+=======
+      if (BackgroundLocations.equals("vanilla")) {
+      	this.BackgroundLocation = GuiComponent.BACKGROUND_LOCATION;
+      } else {
+      	this.BackgroundLocation = new ResourceLocation(BackgroundLocations);
+      }
+>>>>>>> Stashed changes
       this.onFinished = p_96878_;
       this.unmodifiedScrollSpeed = ScrollSpeed;
       this.scrollSpeed = this.unmodifiedScrollSpeed;
@@ -162,6 +180,16 @@ public class EndlessDeepSpaceCredits extends Screen {
            	this.wrapCreditsIO("texts/endless_deep_space.credits.json", this::addCreditsFile);
          	this.wrapCreditsIO("texts/credits.json", this::addCreditsFile);
            	this.wrapCreditsIO("texts/postcredits.txt", this::addPoemFile);
+<<<<<<< Updated upstream
+=======
+         } else if ((this.chapter).equals("vanilla_poem_and_endless_deep_space_credits")) {
+           	this.wrapCreditsIO("texts/end.txt", this::addPoemFile);
+           	this.wrapCreditsIO("texts/endless_deep_space.credits.json", this::addCreditsFile);
+           	this.wrapCreditsIO("texts/postcredits.txt", this::addPoemFile);
+         }	else if ((this.chapter).equals("vanilla_credits")) {
+         	this.wrapCreditsIO("texts/credits.json", this::addCreditsFile);
+           	this.wrapCreditsIO("texts/postcredits.txt", this::addPoemFile);
+>>>>>>> Stashed changes
          } else if ((this.chapter).equals("credits")) {
          	this.wrapCreditsIO("texts/endless_deep_space.credits.json", this::addCreditsFile);
          	this.wrapCreditsIO("texts/credits.json", this::addCreditsFile);

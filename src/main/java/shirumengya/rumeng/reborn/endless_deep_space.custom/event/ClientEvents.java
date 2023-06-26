@@ -18,6 +18,22 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.DimensionSpecialEffectsManager;
 import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
+<<<<<<< Updated upstream
+=======
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import shirumengya.rumeng.reborn.endless_deep_space.item.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.item.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.init.*;
+import net.minecraft.world.item.BowItem;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.*;
+import net.minecraft.resources.ResourceLocation;
+import com.google.common.util.concurrent.Runnables;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraft.client.gui.screens.TitleScreen;
+>>>>>>> Stashed changes
 
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = EndlessDeepSpaceMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -85,4 +101,8 @@ public class ClientEvents {
                     BrokenBookRenderer::new);
         }
     }
+
+	@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE, modid = EndlessDeepSpaceMod.MODID)
+	public static class ForgeEvents {
+	}
 }

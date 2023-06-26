@@ -22,6 +22,8 @@ import shirumengya.rumeng.reborn.endless_deep_space.item.NetheritePocketKnifeIte
 import shirumengya.rumeng.reborn.endless_deep_space.item.LogoItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.IronPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.IntertwinedItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.GravityCoreItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.GravityBowItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.GoldenPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.GeocentricItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FrozenSwordItem;
@@ -36,10 +38,16 @@ import shirumengya.rumeng.reborn.endless_deep_space.item.FpsItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.FItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EyeballItemItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.EnderBowItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.EnchantedTotemOfUndyingItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DiamondPocketKnifeItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DetectorOfBrokenItem;
+<<<<<<< Updated upstream
 import shirumengya.rumeng.reborn.endless_deep_space.item.DddItem;
 import shirumengya.rumeng.reborn.endless_deep_space.item.DItem;
+=======
+import shirumengya.rumeng.reborn.endless_deep_space.item.AntigravityCoreItem;
+import shirumengya.rumeng.reborn.endless_deep_space.item.AntigravityBowItem;
+>>>>>>> Stashed changes
 import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -112,8 +120,21 @@ public class EndlessDeepSpaceModItems {
 	public static final RegistryObject<Item> DDD = REGISTRY.register("ddd", () -> new DddItem());
 	public static final RegistryObject<Item> LAVA_ABSORBER = block(EndlessDeepSpaceModBlocks.LAVA_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 	public static final RegistryObject<Item> WATER_ABSORBER = block(EndlessDeepSpaceModBlocks.WATER_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+<<<<<<< Updated upstream
 	public static final RegistryObject<Item> GHASTLIER_SPAWN_EGG = REGISTRY.register("ghastlier_spawn_egg",
 			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.GHASTLIER, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
+=======
+	public static final RegistryObject<Item> ENCHANTED_TOTEM_OF_UNDYING = REGISTRY.register("enchanted_totem_of_undying", () -> new EnchantedTotemOfUndyingItem());
+	public static final RegistryObject<Item> SCREAMING_GHAST_SPAWN_EGG = REGISTRY.register("screaming_ghast_spawn_egg",
+			() -> new ForgeSpawnEggItem(EndlessDeepSpaceModEntities.SCREAMING_GHAST, -1, -1, new Item.Properties().tab(EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP)));
+	public static final RegistryObject<Item> TRACKING_BOW = REGISTRY.register("tracking_bow", () -> new TrackingArrowItem());
+	public static final RegistryObject<Item> SCREAM_ALTAR = block(EndlessDeepSpaceModBlocks.SCREAM_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> WITHER_WRATH_ALTAR = block(EndlessDeepSpaceModBlocks.WITHER_WRATH_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> GRAVITY_BOW = REGISTRY.register("gravity_bow", () -> new GravityBowItem());
+	public static final RegistryObject<Item> ANTIGRAVITY_BOW = REGISTRY.register("antigravity_bow", () -> new AntigravityBowItem());
+	public static final RegistryObject<Item> GRAVITY_CORE = REGISTRY.register("gravity_core", () -> new GravityCoreItem());
+	public static final RegistryObject<Item> ANTIGRAVITY_CORE = REGISTRY.register("antigravity_core", () -> new AntigravityCoreItem());
+>>>>>>> Stashed changes
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

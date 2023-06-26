@@ -15,6 +15,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 
 public class PenetratingBowItem extends Item {
 	public PenetratingBowItem() {
@@ -49,6 +52,7 @@ public class PenetratingBowItem extends Item {
 			double y = entity.getY();
 			double z = entity.getZ();
 			PenetratingBowDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure.execute(entity, itemstack);
+			world.playSound(null, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.arrow.shoot")), SoundSource.PLAYERS, 1, 1);
 		}
 	}
 }

@@ -3,6 +3,7 @@ package shirumengya.rumeng.reborn.endless_deep_space.procedures;
 import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModEnchantments;
 import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.init.EndlessDeepSpaceModAttributes;
+import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModItems;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -33,7 +34,7 @@ public class ItemAttributeTickProcedure {
 	}
 
 	private static void execute(@Nullable Event event, ItemStack itemstack) {
-		if (itemstack.getItem() == Items.TOTEM_OF_UNDYING) {
+		if (itemstack.getItem() == Items.TOTEM_OF_UNDYING || itemstack.getItem() == EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()) {
 			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.MAINHAND) {
 				_event.addModifier(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get(),
 						(new AttributeModifier(UUID.fromString("6a5773f4-8745-47dd-819d-ce3c7a0b150b"), EndlessDeepSpaceMod.MODID + "." + "random regeneration probability", 0.01, AttributeModifier.Operation.ADDITION)));

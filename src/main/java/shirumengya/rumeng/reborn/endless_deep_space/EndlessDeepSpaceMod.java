@@ -80,13 +80,18 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.recipe.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.fishing_rod.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.crossbow.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.*;
 import java.util.Locale;
 
 @Mod("endless_deep_space")
 public class EndlessDeepSpaceMod {
 	public static final Logger LOGGER = LogManager.getLogger(EndlessDeepSpaceMod.class);
 	public static final String MODID = "endless_deep_space";
+<<<<<<< Updated upstream
 	public static final String Version = "0.0.00013886";
+=======
+	public static final String Version = "0.0.00013890";
+>>>>>>> Stashed changes
 
 	public EndlessDeepSpaceMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -193,6 +198,7 @@ public class EndlessDeepSpaceMod {
         MenuScreens.register(EndlessDeepSpaceCustomMenuTypes.CONVERSION_TABLE_MENU.get(), ConversionTableScreen::new);
         FishingRodItemProperties.addCustomFishingRodItemProperties();
         CrossbowItemProperties.addCustomCrossbowItemProperties();
+        SpecialItemProperties.addCustomSpecialItemProperties();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

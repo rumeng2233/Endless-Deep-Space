@@ -296,10 +296,12 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientSuggestionProvider;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.screens.EndlessDeepSpaceCredits;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.toasts.*;
+import net.minecraft.client.gui.components.toasts.ToastComponent;
 
 @Mixin(ClientPacketListener.class)
 public abstract class ClientPacketListenerMixin implements ClientGamePacketListener {
-@Final
+//@Final
 @Shadow
 Minecraft minecraft;
 ClientLevel level;
@@ -325,6 +327,7 @@ ClientLevel level;
       } else if (clientboundgameeventpacket$type == ClientboundGameEventPacket.WIN_GAME) {
          if (i == 0) {
             if (Math.random() < 0.2) {
+<<<<<<< Updated upstream
             	this.minecraft.setScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "broken", 0.5F, true, true, () -> {
                		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
             	}));
@@ -350,11 +353,44 @@ ClientLevel level;
             	}));
             } else {
             	this.minecraft.setScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "end_stone", 0.5F, true, true, () -> {
+=======
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/gui/endless_deep_space_credits_background/broken.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else if (Math.random() < 0.2) {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/gui/options_background.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else if (Math.random() < 0.2) {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/block/dirt.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else if (Math.random() < 0.2) {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/block/stone.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else if (Math.random() < 0.2) {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/block/netherrack.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else if (Math.random() < 0.0114514) {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/gui/endless_deep_space_credits_background/aaa.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+               		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
+            	}));
+            } else {
+            	this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "textures/block/end_stone.png", SoundEvents.MUSIC_CREDITS, 0.75F, true, true, () -> {
+>>>>>>> Stashed changes
                		this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
             	}));
             }
          } else if (i == 1) {
+<<<<<<< Updated upstream
             this.minecraft.setScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits_and_credits", "end_stone", 0.5F, true, false, () -> {
+=======
+         	ToastComponent toastcomponent = this.minecraft.getToasts();
+         	EndlessDeepSpaceImitationAdvancementToast.add(toastcomponent, new ItemStack(Items.DRAGON_EGG), Component.translatable("seenCredits.description"), true);
+            this.minecraft.forceSetScreen(new EndlessDeepSpaceCredits("vanilla_poem_and_endless_deep_space_credits", "vanilla", SoundEvents.MUSIC_CREDITS, 0.5F, true, false, () -> {
+>>>>>>> Stashed changes
                this.minecraft.player.connection.send(new ServerboundClientCommandPacket(ServerboundClientCommandPacket.Action.PERFORM_RESPAWN));
             }));
          }

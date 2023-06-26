@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "soul_sand_valley",
+    "basalt_deltas",
+    "nether_wastes"
+  ],
+  "spawners": {
+    "type": "endless_deep_space:screaming_ghast",
+    "weight": 20,
+    "minCount": 1,
+    "maxCount": 8
+  }
+}

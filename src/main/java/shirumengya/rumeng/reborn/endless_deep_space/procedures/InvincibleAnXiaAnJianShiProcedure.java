@@ -1,7 +1,8 @@
 package shirumengya.rumeng.reborn.endless_deep_space.procedures;
 
 import shirumengya.rumeng.reborn.endless_deep_space.network.EndlessDeepSpaceModVariables;
-
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
@@ -52,7 +53,8 @@ public class InvincibleAnXiaAnJianShiProcedure {
 					_player.displayClientMessage(Component.literal((Component.translatable("message.invincible.endless_deep_space.on").getString())),
 							(false));
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.invincible.endless_deep_space.on"), Component.translatable(""), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.invincible.endless_deep_space.on"), Component.translatable(""), 3000L, -11534256, -16777216), _serverPlayer);
 			} else {
 				{
 					boolean _setval = false;
@@ -65,14 +67,16 @@ public class InvincibleAnXiaAnJianShiProcedure {
 					_player.displayClientMessage(Component.literal((Component.translatable("message.invincible.endless_deep_space.off").getString())),
 							(false));
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.invincible.endless_deep_space.off"), Component.translatable(""), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.invincible.endless_deep_space.off"), Component.translatable(""), 3000L, -11534256, -16777216), _serverPlayer);
 			}
 		} else {
 			if (entity instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(Component.literal((Component.translatable("message.invincible.endless_deep_space.error").getString())),
 						(false));
 				ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-				EndlessDeepSpaceCommonMessageToast.add(toastcomponent, Component.translatable("message.invincible.endless_deep_space.error"), Component.translatable(""), 3000L, -65536, -16777216);
+				if (entity instanceof ServerPlayer _serverPlayer)
+				ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonMessageToastS2CPacket(Component.translatable("message.invincible.endless_deep_space.error"), Component.translatable(""), 3000L, -65536, -16777216), _serverPlayer);
 		}
 	}
 }

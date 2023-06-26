@@ -147,9 +147,16 @@ import net.minecraft.world.scores.PlayerTeam;
 import org.slf4j.Logger;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraft.world.entity.HumanoidArm;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import shirumengya.rumeng.reborn.endless_deep_space.item.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.world.damagesource.EndlessDeepSpaceDamageSource;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+	
+	private static final EntityDataAccessor<Integer> DataBleedTime = SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Float> DataBleedLevel = SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.FLOAT);
 	
 	@Inject(method = {"getDamageAfterMagicAbsorb"}, at = {@At("HEAD")}, cancellable = true)
 	protected float getDamageAfterMagicAbsorb(DamageSource p_21193_, float p_21194_, CallbackInfoReturnable<Float> info) {
@@ -157,6 +164,9 @@ public class LivingEntityMixin {
 		if (livingEntity.getAttribute(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get()) != null) {
 			int k = EnchantmentHelper.getDamageProtection(livingEntity.getArmorSlots(), p_21193_);
 			float amount = p_21194_ - (float)livingEntity.getAttribute(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get()).getValue();
+			if (p_21193_ == EndlessDeepSpaceDamageSource.BLEEDING && (float)livingEntity.getAttribute(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get()).getValue() > 0) {
+				amount = p_21194_ - ((float)livingEntity.getAttribute(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get()).getValue() / 4);
+			}
 			float amount1 = CombatRules.getDamageAfterMagicAbsorb(amount, (float)k);
 			if (p_21193_.isBypassEnchantments() || p_21193_.isBypassMagic()) {
 			if (amount >= 0.0F) {
@@ -212,11 +222,66 @@ public class LivingEntityMixin {
             }
             livingEntity.setHealth(1.0F);
             livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
             livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
             livingEntity.level.broadcastEntityEvent(livingEntity, (byte)35);
             info.setReturnValue(true);
         }
+        
+        ItemStack itemstack = null;
+		if (livingEntity instanceof Player) {
+         for(InteractionHand interactionhand : InteractionHand.values()) {
+            ItemStack itemstack1 = livingEntity.getItemInHand(interactionhand);
+            if (livingEntity instanceof Player _player)
+            if (itemstack1.is(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()) && (_player.getCooldowns().isOnCooldown(itemstack1.getItem()) == false) && (((itemstack1).getMaxDamage() - (itemstack1).getDamageValue()) > 0)) {
+               itemstack = itemstack1.copy();
+               itemstack1.hurt(1, RandomSource.create(), null);
+               if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack1) <= 0) {
+               		EnchantedTotemOfUndyingItem.setRestoreHealth(itemstack1, 1);
+               }
+               _player.getCooldowns().addCooldown(itemstack1.getItem(), 195);
+               _player.stopUsingItem();
+               break;
+            }
+         }
+		}
+
+		if (!(livingEntity instanceof Player)) {
+         for(InteractionHand interactionhand : InteractionHand.values()) {
+            ItemStack itemstack1 = livingEntity.getItemInHand(interactionhand);
+            if (itemstack1.is(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()) && (((itemstack1).getMaxDamage() - (itemstack1).getDamageValue()) > 0)) {
+               itemstack = itemstack1.copy();
+               itemstack1.hurt(1, RandomSource.create(), null);
+               if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack1) <= 0) {
+               		EnchantedTotemOfUndyingItem.setRestoreHealth(itemstack1, 1);
+               }
+               break;
+            }
+         }
+		}
+
+         if (itemstack != null) {
+            if (livingEntity instanceof ServerPlayer) {
+               ServerPlayer serverplayer = (ServerPlayer)livingEntity;
+               serverplayer.awardStat(Stats.ITEM_USED.get(EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get()));
+               CriteriaTriggers.USED_TOTEM.trigger(serverplayer, itemstack);
+               ModMessages.sendToPlayer(new CommonDisplayItemActivationS2CPacket(itemstack), serverplayer);
+            }
+
+            if (EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack) <= 0) {
+            	livingEntity.setHealth(1);
+            } else {
+            	livingEntity.setHealth((float)EnchantedTotemOfUndyingItem.getRestoreHealth(itemstack));
+            }
+            livingEntity.removeAllEffects();
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
+            livingEntity.addEffect(new MobEffectInstance(EndlessDeepSpaceModMobEffects.TOTEM_OF_UNDYING.get(), 200, 0));
+            livingEntity.level.broadcastEntityEvent(livingEntity, (byte)35);
+            info.setReturnValue(true);
+         }
+         
     }
 
     @Inject(method = {"createLivingAttributes"}, at = {@At("HEAD")}, cancellable = true)
@@ -238,7 +303,10 @@ public class LivingEntityMixin {
       	.add(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get())
       	.add(EndlessDeepSpaceModAttributes.HEAL_UNABLE.get())
       	.add(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get())
-      	.add(EndlessDeepSpaceModAttributes.DAMAGE_PROTECTION_TIME.get()));
+      	.add(EndlessDeepSpaceModAttributes.DAMAGE_PROTECTION_TIME.get())
+      	.add(EndlessDeepSpaceModAttributes.BLEEDING_DURING_ATTACK_PROBABILITY.get())
+      	.add(EndlessDeepSpaceModAttributes.NUMBER_OF_BLEEDING_DURING_ATTACK.get())
+      	.add(EndlessDeepSpaceModAttributes.BLEEDING_DAMAGE_DURING_ATTACK.get()));
       	return AttributeSupplier.builder()
       	.add(Attributes.MAX_HEALTH)
       	.add(Attributes.KNOCKBACK_RESISTANCE)
@@ -256,6 +324,103 @@ public class LivingEntityMixin {
       	.add(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get())
       	.add(EndlessDeepSpaceModAttributes.HEAL_UNABLE.get())
       	.add(EndlessDeepSpaceModAttributes.DAMAGE_REDUCTION.get())
-      	.add(EndlessDeepSpaceModAttributes.DAMAGE_PROTECTION_TIME.get());
+      	.add(EndlessDeepSpaceModAttributes.DAMAGE_PROTECTION_TIME.get())
+      	.add(EndlessDeepSpaceModAttributes.BLEEDING_DURING_ATTACK_PROBABILITY.get())
+      	.add(EndlessDeepSpaceModAttributes.NUMBER_OF_BLEEDING_DURING_ATTACK.get())
+      	.add(EndlessDeepSpaceModAttributes.BLEEDING_DAMAGE_DURING_ATTACK.get());
+   	}
+
+   	public int getBleedTime(LivingEntity livingEntity) {
+      	return livingEntity.getEntityData().get(DataBleedTime);
+   	}
+
+   	public float getBleedLevel(LivingEntity livingEntity) {
+      	return livingEntity.getEntityData().get(DataBleedLevel);
+   	}
+
+   	public void setBleedTime(int time, LivingEntity livingEntity) {
+   		int i = time;
+   		if (i >= 0) {
+   			livingEntity.getEntityData().set(DataBleedTime, i);
+   		} else {
+   			livingEntity.getEntityData().set(DataBleedTime, 0);
+   		}
+   	}
+
+   	public void addBleedTime(int time, LivingEntity livingEntity) {
+   		int f = this.getBleedTime(livingEntity);
+      	if (f > 0) {
+         	this.setBleedTime(f + time, livingEntity);
+      	}
+   	}
+
+   	public void setBleedLevel(float level, LivingEntity livingEntity) {
+   		float i = level;
+   		if (i >= 0.0F) {
+   			livingEntity.getEntityData().set(DataBleedLevel, i);
+   		} else {
+   			livingEntity.getEntityData().set(DataBleedLevel, 0.0F);
+   		}
+   	}
+
+   	public void addBleedLevel(float level, LivingEntity livingEntity) {
+   		float f = this.getBleedLevel(livingEntity);
+      	if (f > 0.0F) {
+         	this.setBleedLevel(f + level, livingEntity);
+      	}
+   	}
+
+   	public boolean isBleeding(LivingEntity livingEntity) {
+   		return this.getBleedTime(livingEntity) > 0 && this.getBleedLevel(livingEntity) > 0.0F;
+   	}
+
+	@Inject(method = {"heal"}, at = {@At("HEAD")}, cancellable = true)
+   	public void heal(float p_21116_, CallbackInfo info) {
+   		LivingEntity livingEntity = ((LivingEntity)(Object)this);
+   		if (this.isBleeding(livingEntity)) {
+   			info.cancel();
+   		}
+   	}
+
+	@Inject(method = {"defineSynchedData"}, at = {@At("HEAD")}, cancellable = true)
+   	protected void defineSynchedData(CallbackInfo info) {
+   		LivingEntity livingEntity = ((LivingEntity)(Object)this);
+   		livingEntity.getEntityData().define(DataBleedLevel, 0.0F);
+   		livingEntity.getEntityData().define(DataBleedTime, 0);
+   	}
+
+	@Inject(method = {"addAdditionalSaveData"}, at = {@At("HEAD")}, cancellable = true)
+   	public void addAdditionalSaveData(CompoundTag p_21145_, CallbackInfo info) {
+   		LivingEntity livingEntity = ((LivingEntity)(Object)this);
+   		p_21145_.putInt("BleedTime", this.getBleedTime(livingEntity));
+   		p_21145_.putFloat("BleedLevel", this.getBleedLevel(livingEntity));
+   	}
+
+	@Inject(method = {"readAdditionalSaveData"}, at = {@At("HEAD")}, cancellable = true)
+   	public void readAdditionalSaveData(CompoundTag p_21096_, CallbackInfo info) {
+   		LivingEntity livingEntity = ((LivingEntity)(Object)this);
+   		this.setBleedTime(p_21096_.getInt("BleedTime"), livingEntity);
+   		this.setBleedLevel(p_21096_.getFloat("BleedLevel"), livingEntity);
+   	}
+
+	@Inject(method = {"baseTick"}, at = {@At("HEAD")}, cancellable = true)
+   	public void baseTick(CallbackInfo info) {
+   		LivingEntity livingEntity = ((LivingEntity)(Object)this);
+   		if (this.getBleedTime(livingEntity) > 0 && livingEntity.tickCount % 20 == 0) {
+   			livingEntity.hurt(EndlessDeepSpaceDamageSource.BLEEDING, this.getBleedLevel(livingEntity));
+   			int amount = 0;
+   			if (this.getBleedLevel(livingEntity) <= 1000.0F) {
+   				amount = (int)this.getBleedLevel(livingEntity);
+   			} else {
+   				amount = 1000;
+   			}
+   			for(int i = 0; i < amount; i++){
+            	livingEntity.level.addParticle(ParticleTypes.DAMAGE_INDICATOR, livingEntity.getRandomX(1.0), livingEntity.getRandomY(), livingEntity.getRandomZ(1.0), 0, 0, 0);
+        	}
+   			this.addBleedTime(-1, livingEntity);
+   		}
+   		if (this.getBleedTime(livingEntity) <= 0) {
+   			this.setBleedLevel(0.0F, livingEntity);
+   		}
    	}
 }

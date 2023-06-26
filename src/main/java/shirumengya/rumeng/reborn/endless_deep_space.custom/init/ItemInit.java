@@ -65,6 +65,8 @@ public class ItemInit {
 	public static final RegistryObject<Item> ILLUSIONER_SPAWN_EGG = REGISTRY.register("illusioner_spawn_egg", () -> new SpawnEggItem(EntityType.ILLUSIONER, -13395457, -3355444, new Item.Properties().tab(CreativeModeTabInit.ENDLESS_DEEP_SPACE_CUSTOM)));
 	public static final RegistryObject<Item> LAVA_ABSORBER = edsblock(EndlessDeepSpaceModBlocks.LAVA_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 	public static final RegistryObject<Item> WATER_ABSORBER = edsblock(EndlessDeepSpaceModBlocks.WATER_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> SCREAM_ALTAR = edsblock(EndlessDeepSpaceModBlocks.SCREAM_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> WITHER_WRATH_ALTAR = edsblock(EndlessDeepSpaceModBlocks.WITHER_WRATH_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 
 	public static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(CreativeModeTabInit.ENDLESS_DEEP_SPACE_CUSTOM)));

@@ -61,13 +61,14 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.world.BossEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.world.damagesource.EndlessDeepSpaceDamageSource;
 
 @Mixin(EnderDragon.class)
 public class EnderDragonMixin extends Mob implements Enemy{
 
 private static final ServerBossEvent dragonEvent = (ServerBossEvent)(new ServerBossEvent(Component.translatable("entity.minecraft.ender_dragon"), BossEvent.BossBarColor.PINK, BossEvent.BossBarOverlay.PROGRESS)).setPlayBossMusic(true).setCreateWorldFog(true);
 	
-@Final
+//@Final
 @Shadow
 EndDragonFight dragonFight;
 EnderDragonPhaseManager phaseManager;
@@ -120,9 +121,13 @@ float sittingDamageReceived;
 		this.dragonEvent.removePlayer(player);
 	}
 
-/*	@Overwrite
+	@Overwrite
       public boolean hurt(EnderDragonPart p_31121_, DamageSource p_31122_, float p_31123_) {
       EnderDragon dragon = ((EnderDragon)(Object)this);
+      if (p_31122_ == EndlessDeepSpaceDamageSource.BLEEDING) {
+      	this.hurt(p_31122_, p_31123_);
+      	return true;
+      } else {
       if (this.phaseManager.getCurrentPhase().getPhase() == EnderDragonPhase.DYING) {
          return false;
       } else {
@@ -138,7 +143,7 @@ float sittingDamageReceived;
          if (p_31123_ < 0.01F) {
             return false;
          } else {
-            if (p_31122_.getEntity() instanceof Player || p_31122_.isExplosion()) {
+            if (p_31122_.getEntity() instanceof Player) {
                float f = dragon.getHealth();
                this.hurt(p_31122_, p_31123_);
                if (dragon.isDeadOrDying() && !this.phaseManager.getCurrentPhase().isSitting()) {
@@ -157,6 +162,7 @@ float sittingDamageReceived;
 
             return true;
          }
+      }
       }
    }
 
@@ -183,4 +189,4 @@ float sittingDamageReceived;
          }
       }
    	}
-*/}
+}

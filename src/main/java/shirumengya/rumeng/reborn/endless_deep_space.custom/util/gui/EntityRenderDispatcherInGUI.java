@@ -43,6 +43,11 @@ public class EntityRenderDispatcherInGUI {
       p_98856_.setXRot(-f1 * 20.0F);
       p_98856_.yHeadRot = p_98856_.getYRot();
       p_98856_.yHeadRotO = p_98856_.getYRot();
+      if (Minecraft.getInstance().player != null) {
+      	p_98856_.tickCount = Minecraft.getInstance().player.tickCount;
+      } else {
+      	p_98856_.tickCount++;
+      }
       Lighting.setupForEntityInInventory();
       EntityRenderDispatcher entityrenderdispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
       quaternion1.conj();

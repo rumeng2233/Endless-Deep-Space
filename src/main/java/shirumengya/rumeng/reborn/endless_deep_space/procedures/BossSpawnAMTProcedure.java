@@ -31,13 +31,22 @@ public class BossSpawnAMTProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity.getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("endless_deep_space:boss")))) {
+		if (!entity.canChangeDimensions()) {
 			if (((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get()) != null
-					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()) != null) {
+					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()) != null
+					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.BLEEDING_DURING_ATTACK_PROBABILITY.get()) != null
+					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.NUMBER_OF_BLEEDING_DURING_ATTACK.get()) != null
+					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.BLEEDING_DAMAGE_DURING_ATTACK.get()) != null) {
 				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get())
 						.setBaseValue((Mth.nextDouble(RandomSource.create(), 0, 0.1)));
 				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get())
 						.setBaseValue((Mth.nextDouble(RandomSource.create(), 0, 1.5)));
+				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.BLEEDING_DURING_ATTACK_PROBABILITY.get())
+						.setBaseValue((Mth.nextDouble(RandomSource.create(), 0, 2)));
+				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.NUMBER_OF_BLEEDING_DURING_ATTACK.get())
+						.setBaseValue((Mth.nextDouble(RandomSource.create(), 0, 10)));
+				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.BLEEDING_DAMAGE_DURING_ATTACK.get())
+						.setBaseValue((Mth.nextDouble(RandomSource.create(), 0, 4)));
 			}
 		}
 	}

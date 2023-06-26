@@ -29,6 +29,8 @@ import net.minecraft.nbt.CompoundTag;
 
 public class PenetratingBowArrow extends AbstractHurtingProjectile {
 
+	public int life = 0;
+
    public PenetratingBowArrow(EntityType<? extends PenetratingBowArrow> p_36892_, Level p_36893_) {
       super(p_36892_, p_36893_);
    }
@@ -39,9 +41,8 @@ public class PenetratingBowArrow extends AbstractHurtingProjectile {
 
    	public void tick() {
    		super.tick();
-   		int life = 0;
-   		++life;
-   		if (life >= 400) {
+   		++this.life;
+   		if (this.life >= 200) {
    			this.discard();
    		}
    	}

@@ -6,9 +6,9 @@ package shirumengya.rumeng.reborn.endless_deep_space.init;
 
 import shirumengya.rumeng.reborn.endless_deep_space.entity.WitherestEntity;
 import shirumengya.rumeng.reborn.endless_deep_space.entity.StoneEntity;
+import shirumengya.rumeng.reborn.endless_deep_space.entity.ScreamingGhastEntity;
 import shirumengya.rumeng.reborn.endless_deep_space.entity.MadWitchEntity;
 import shirumengya.rumeng.reborn.endless_deep_space.entity.IEntity;
-import shirumengya.rumeng.reborn.endless_deep_space.entity.GhastlierEntity;
 import shirumengya.rumeng.reborn.endless_deep_space.entity.EnderBowEntity;
 import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
 
@@ -39,10 +39,8 @@ public class EndlessDeepSpaceModEntities {
 			EntityType.Builder.<MadWitchEntity>of(MadWitchEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(MadWitchEntity::new).fireImmune().sized(0.6f, 1.95f));
 	public static final RegistryObject<EntityType<EnderBowEntity>> ENDER_BOW = register("projectile_ender_bow",
 			EntityType.Builder.<EnderBowEntity>of(EnderBowEntity::new, MobCategory.MISC).setCustomClientFactory(EnderBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
-	public static final RegistryObject<EntityType<GhastlierEntity>> GHASTLIER = register("ghastlier",
-			EntityType.Builder.<GhastlierEntity>of(GhastlierEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(100).setUpdateInterval(3).setCustomClientFactory(GhastlierEntity::new)
-
-					.sized(4f, 4f));
+	public static final RegistryObject<EntityType<ScreamingGhastEntity>> SCREAMING_GHAST = register("screaming_ghast", EntityType.Builder.<ScreamingGhastEntity>of(ScreamingGhastEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(640).setUpdateInterval(3).setCustomClientFactory(ScreamingGhastEntity::new).fireImmune().sized(4f, 4f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -55,7 +53,7 @@ public class EndlessDeepSpaceModEntities {
 			StoneEntity.init();
 			IEntity.init();
 			MadWitchEntity.init();
-			GhastlierEntity.init();
+			ScreamingGhastEntity.init();
 		});
 	}
 
@@ -65,6 +63,6 @@ public class EndlessDeepSpaceModEntities {
 		event.put(STONE.get(), StoneEntity.createAttributes().build());
 		event.put(I.get(), IEntity.createAttributes().build());
 		event.put(MAD_WITCH.get(), MadWitchEntity.createAttributes().build());
-		event.put(GHASTLIER.get(), GhastlierEntity.createAttributes().build());
+		event.put(SCREAMING_GHAST.get(), ScreamingGhastEntity.createAttributes().build());
 	}
 }

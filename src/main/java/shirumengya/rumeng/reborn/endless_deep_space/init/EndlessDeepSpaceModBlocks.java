@@ -4,7 +4,9 @@
  */
 package shirumengya.rumeng.reborn.endless_deep_space.init;
 
+import shirumengya.rumeng.reborn.endless_deep_space.block.WitherWrathAltarBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.WaterAbsorberBlock;
+import shirumengya.rumeng.reborn.endless_deep_space.block.ScreamAltarBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.RagingFireOreBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.RagingFireBlockBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.LavaAbsorberBlock;
@@ -38,6 +40,8 @@ public class EndlessDeepSpaceModBlocks {
 	public static final RegistryObject<Block> FROZEN_BLOCK = REGISTRY.register("frozen_block", () -> new FrozenBlockBlock());
 	public static final RegistryObject<Block> LAVA_ABSORBER = REGISTRY.register("lava_absorber", () -> new LavaAbsorberBlock());
 	public static final RegistryObject<Block> WATER_ABSORBER = REGISTRY.register("water_absorber", () -> new WaterAbsorberBlock());
+	public static final RegistryObject<Block> SCREAM_ALTAR = REGISTRY.register("scream_altar", () -> new ScreamAltarBlock());
+	public static final RegistryObject<Block> WITHER_WRATH_ALTAR = REGISTRY.register("wither_wrath_altar", () -> new WitherWrathAltarBlock());
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSideHandler {

@@ -25,7 +25,7 @@ public class RandomRegenerationTickProcedure {
 	private static void execute(@Nullable Event event, LivingEntity entity) {
 		if (entity == null)
 			return;
-		if (((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get()) != null && ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()) != null) {
+		if (((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get()) != null && ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()) != null && !entity.level.isClientSide) {
 			if (Math.random() < ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get())
 					.getValue()) {
 				entity.heal((float) ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()).getValue());

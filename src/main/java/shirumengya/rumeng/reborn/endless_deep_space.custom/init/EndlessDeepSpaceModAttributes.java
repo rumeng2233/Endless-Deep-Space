@@ -39,6 +39,12 @@ public class EndlessDeepSpaceModAttributes {
 	public static final RegistryObject<Attribute> DAMAGE_PROTECTION_TIME = REGISTRY.register("damage_protection_time",
 			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".damage_protection_time", 20, -2000000000, 2000000000))
 					.setSyncable(true));
+	public static final RegistryObject<Attribute> BLEEDING_DURING_ATTACK_PROBABILITY = REGISTRY.register("bleeding_during_attack_probability",
+			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".bleeding_during_attack_probability", 0, 0, 10)).setSyncable(true));
+	public static final RegistryObject<Attribute> NUMBER_OF_BLEEDING_DURING_ATTACK = REGISTRY.register("number_of_bleeding_during_attack",
+			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".number_of_bleeding_during_attack", 0, 0, 2000000000)).setSyncable(true));
+	public static final RegistryObject<Attribute> BLEEDING_DAMAGE_DURING_ATTACK = REGISTRY.register("bleeding_damage_during_attack",
+			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".bleeding_damage_during_attack", 0, 0, 2000000000)).setSyncable(true));
 
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {

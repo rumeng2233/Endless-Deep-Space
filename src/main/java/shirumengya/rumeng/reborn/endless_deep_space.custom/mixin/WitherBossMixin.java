@@ -71,7 +71,6 @@ ServerBossEvent bossEvent;
 int destroyBlocksTick;
 int[] idleHeadUpdates;
 int[] nextHeadUpdate;
-
 private static TargetingConditions TARGETING_CONDITIONS;
 
 	public WitherBossMixin(EntityType<? extends WitherBoss> p_31096_, Level p_31097_) {
@@ -168,7 +167,11 @@ private static TargetingConditions TARGETING_CONDITIONS;
             this.setShield(0);
             if (boss.isPowered()) {
                this.bossEvent.setColor(BossEvent.BossBarColor.PURPLE);
-               this.bossEvent.setCreateWorldFog(true);
+               if (boss.isDeadOrDying()) {
+               		this.bossEvent.setCreateWorldFog(false);
+               } else {
+               		this.bossEvent.setCreateWorldFog(true);
+               }
             } else {
                this.bossEvent.setColor(BossEvent.BossBarColor.PINK);
                this.bossEvent.setCreateWorldFog(false);
@@ -361,6 +364,13 @@ private static TargetingConditions TARGETING_CONDITIONS;
 
    	public boolean isDeadOrDying() {
       return this.getHealth() <= 0.0F && this.getShield() <= 0.0F;
+   	}
+
+   	public void setHealth(float p_21154_) {
+   		WitherBoss boss = ((WitherBoss)(Object)this);
+   		if (boss.getInvulnerableTicks() <= 0 && (this.getShield() <= 0)) {
+   			super.setHealth(p_21154_);
+   		}
    	}
 
    	public void kill() {

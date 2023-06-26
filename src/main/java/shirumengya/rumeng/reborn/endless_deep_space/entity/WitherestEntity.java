@@ -1,7 +1,7 @@
 
 package shirumengya.rumeng.reborn.endless_deep_space.entity;
 
-import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModEntities;
+import shirumengya.rumeng.reborn.endless_deep_space.init.*;
 import shirumengya.rumeng.reborn.endless_deep_space.procedures.WitherestTickProcedure;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -55,6 +55,11 @@ import java.util.Comparator;
 import net.minecraft.world.entity.Entity.RemovalReason;
 import net.minecraft.core.particles.ParticleTypes;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.world.damagesource.EndlessDeepSpaceDamageSource;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.util.entity.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
 
 public class WitherestEntity extends WitherBoss {
 	private final ServerBossEvent AssaultValue = new ServerBossEvent(Component.translatable("entity.endless_deep_space.witherest.assault_value"), ServerBossEvent.BossBarColor.BLUE,
@@ -67,11 +72,14 @@ public class WitherestEntity extends WitherBoss {
 
 	public WitherestEntity(EntityType<WitherestEntity> type, Level world) {
 		super(type, world);
-		xpReward = 100;
+		xpReward = 5000;
 		setNoAi(false);
 		setPersistenceRequired();
 		this.moveControl = new FlyingMoveControl(this, 10, false);
 		this.noCulling = true;
+		if (!this.level.isClientSide) {
+			ModMessages.sendToAllPlayers(new SendEndlessDeepSpaceCommonToastS2CPacket(new ItemStack(EndlessDeepSpaceModItems.WITHEREST_SPAWN_EGG.get()), this.getDisplayName(), Component.translatable("entity.endless_deep_space.witherest.spawning"), 5000L, -11534256, -16777216));
+		}
 	}
 
 	@Override
@@ -79,7 +87,16 @@ public class WitherestEntity extends WitherBoss {
 		super.baseTick();
 		WitherestTickProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 		this.AssaultValue.setProgress((float) this.getPersistentData().getDouble("endless_deep_space:assault_value") / 100.0F);
+		if ((!this.level.isClientSide) && (!this.isPowered())) {
+			TrackingUtil.forceEffect(this, LivingEntity.class, 30.0D, -100.0D, 100.0D);
+		}
 	}
+
+	@Override
+	public void makeInvulnerable() {
+		super.makeInvulnerable();
+      	this.setHealth(this.getMaxHealth());
+   	}
 
 	@Override
 	public boolean canChangeDimensions() {

@@ -10,6 +10,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.enchantment.DamageReductionE
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.DamageIncreaseEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.CannotMinePickaxeEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.CanNotPickUpEnchantment;
+import shirumengya.rumeng.reborn.endless_deep_space.enchantment.BleedingEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.BetterSharpnessEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.BetterProtectionEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.BestSharpnessEnchantment;
@@ -32,4 +33,5 @@ public class EndlessDeepSpaceModEnchantments {
 	public static final RegistryObject<Enchantment> DAMAGE_INCREASE = REGISTRY.register("damage_increase", () -> new DamageIncreaseEnchantment());
 	public static final RegistryObject<Enchantment> BETTER_PROTECTION = REGISTRY.register("better_protection", () -> new BetterProtectionEnchantment());
 	public static final RegistryObject<Enchantment> DAMAGE_REDUCTION = REGISTRY.register("damage_reduction", () -> new DamageReductionEnchantmentEnchantment());
+	public static final RegistryObject<Enchantment> BLEEDING = REGISTRY.register("bleeding", () -> new BleedingEnchantment());
 }

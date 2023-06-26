@@ -288,7 +288,7 @@ import net.minecraft.world.entity.monster.warden.Warden;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
 	
-@Final
+//@Final
 @Shadow
 IntegratedServer singleplayerServer;
 ServerData currentServer;
@@ -315,8 +315,7 @@ ServerData currentServer;
       } else if (Minecraft.getInstance().screen instanceof WinScreen) {
          return Musics.CREDITS;
       } else if (Minecraft.getInstance().player != null) {
-		  if (!Minecraft.getInstance().player.level.getEntitiesOfClass(Warden.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 49, 51, 49), e -> true).isEmpty()
-		  || !Minecraft.getInstance().player.level.getEntitiesOfClass(GhastlierEntity.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 256, 256, 256), e -> true).isEmpty()) {
+		  if (!Minecraft.getInstance().player.level.getEntitiesOfClass(Warden.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 49, 51, 49), e -> true).isEmpty()) {
 		  	return EndlessDeepSpaceMusics.MUSIC_C418_0X10C;
 		  }
       	  if (!Minecraft.getInstance().player.level.getEntitiesOfClass(MadWitchEntity.class, AABB.ofSize(new Vec3(Minecraft.getInstance().player.getX(), Minecraft.getInstance().player.getY(), Minecraft.getInstance().player.getZ()), 256, 256, 256), e -> true).isEmpty()

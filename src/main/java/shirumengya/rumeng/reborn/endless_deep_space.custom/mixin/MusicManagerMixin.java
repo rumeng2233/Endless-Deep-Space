@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.*;
 
 @Mixin(MusicManager.class)
 public class MusicManagerMixin {
-@Final
+//@Final
 @Shadow
 Minecraft minecraft;
 SoundInstance currentMusic;

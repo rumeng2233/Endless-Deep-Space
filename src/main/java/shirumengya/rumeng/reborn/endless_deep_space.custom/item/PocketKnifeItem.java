@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Vanishable;
 import net.minecraft.world.item.*;
 
 public class PocketKnifeItem extends SwordItem implements Vanishable {

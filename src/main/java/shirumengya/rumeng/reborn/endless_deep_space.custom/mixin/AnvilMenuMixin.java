@@ -29,7 +29,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.custom.init.*;
 @Mixin(AnvilMenu.class)
 public class AnvilMenuMixin extends ItemCombinerMenu {
 
-@Final
+//@Final
 @Shadow
 DataSlot cost = DataSlot.standalone();
 String itemName;

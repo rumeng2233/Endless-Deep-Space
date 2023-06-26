@@ -32,8 +32,11 @@ public class SharpEyesRenderingFogTickProcedure {
 		if (entity == null || fog == null)
 			return;
 		if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(EndlessDeepSpaceModMobEffects.SHARP_EYES.get()) : false) {
+			if (event != null && event.isCancelable()) {
+				event.setCanceled(true);
+			}
 			fog.setCanceled(true);
-			fog.setNearPlaneDistance(Integer.MAX_VALUE);
+			fog.setNearPlaneDistance(Integer.MAX_VALUE - 1000);
 			fog.setFarPlaneDistance(Integer.MAX_VALUE);
 			fog.setFogShape(FogShape.SPHERE);
 		}
