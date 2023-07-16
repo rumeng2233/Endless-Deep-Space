@@ -57,6 +57,9 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.resources.ResourceLocation;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.init.EndlessDeepSpaceModAttributes;
 
 @Mixin(WitherBoss.class)
 public class WitherBossMixin extends Monster implements PowerableMob, RangedAttackMob {
@@ -71,7 +74,6 @@ ServerBossEvent bossEvent;
 int destroyBlocksTick;
 int[] idleHeadUpdates;
 int[] nextHeadUpdate;
-
 private static TargetingConditions TARGETING_CONDITIONS;
 
 	public WitherBossMixin(EntityType<? extends WitherBoss> p_31096_, Level p_31097_) {
@@ -81,7 +83,7 @@ private static TargetingConditions TARGETING_CONDITIONS;
 	@Inject(method = {"defineSynchedData"}, at = {@At("HEAD")}, cancellable = true)
 	protected void defineSynchedData(CallbackInfo info) {
 	WitherBoss boss = ((WitherBoss)(Object)this);
-      	boss.getEntityData().define(Data_Shield, (float)0.0);
+      	boss.getEntityData().define(Data_Shield, (float)0.0F);
    	}
 
    	@Inject(method = {"addAdditionalSaveData"}, at = {@At("HEAD")}, cancellable = true)
@@ -102,10 +104,11 @@ private static TargetingConditions TARGETING_CONDITIONS;
       if (boss.isInvulnerableTo(p_31461_)) {
          return false;
       } else if (this.getShield() > 0) {
-         if (!(p_31461_.getEntity() instanceof WitherBoss)) {
+         if (!(p_31461_.getEntity() instanceof WitherBoss) && boss.invulnerableTime <= 0) {
             this.setShield(this.getShield() - p_31462_);
+            boss.invulnerableTime = 10;
          }
-         return false;
+         return true;
       } else if (p_31461_ != DamageSource.DROWN && !(p_31461_.getEntity() instanceof WitherBoss)) {
          if (boss.getInvulnerableTicks() > 0 && p_31461_ != DamageSource.OUT_OF_WORLD) {
             return false;
@@ -156,7 +159,7 @@ private static TargetingConditions TARGETING_CONDITIONS;
          }
 
          boss.setInvulnerableTicks(k1);
-         this.setShield(600);
+         this.setShield(this.getMaxShield());
          if (boss.tickCount % 10 == 0) {
             boss.heal(10.0F);
          }
@@ -168,7 +171,11 @@ private static TargetingConditions TARGETING_CONDITIONS;
             this.setShield(0);
             if (boss.isPowered()) {
                this.bossEvent.setColor(BossEvent.BossBarColor.PURPLE);
-               this.bossEvent.setCreateWorldFog(true);
+               if (boss.isDeadOrDying()) {
+               		this.bossEvent.setCreateWorldFog(false);
+               } else {
+               		this.bossEvent.setCreateWorldFog(true);
+               }
             } else {
                this.bossEvent.setColor(BossEvent.BossBarColor.PINK);
                this.bossEvent.setCreateWorldFog(false);
@@ -176,6 +183,9 @@ private static TargetingConditions TARGETING_CONDITIONS;
             this.bossEvent.setProgress(boss.getHealth() / boss.getMaxHealth());
             this.bossEvent.setDarkenScreen(true);
          } else {
+         	if (this.getShield() > this.getMaxShield()) {
+         		this.setShield(this.getMaxShield());
+         	}
             if (this.getShield() <= 150) {
                this.bossEvent.setColor(BossEvent.BossBarColor.RED);
             } else if (this.getShield() <= 300) {
@@ -185,7 +195,7 @@ private static TargetingConditions TARGETING_CONDITIONS;
             } else {
                this.bossEvent.setColor(BossEvent.BossBarColor.WHITE);
             }
-            this.bossEvent.setProgress(this.getShield() / 600.0F);
+            this.bossEvent.setProgress(this.getShield() / this.getMaxShield());
             this.bossEvent.setDarkenScreen(false);
          }
 
@@ -355,6 +365,11 @@ private static TargetingConditions TARGETING_CONDITIONS;
 	}
 
 	@Overwrite
+	public static AttributeSupplier.Builder createAttributes() {
+      	return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 300.0D).add(Attributes.MOVEMENT_SPEED, (double)0.6F).add(Attributes.FLYING_SPEED, (double)0.6F).add(Attributes.FOLLOW_RANGE, 40.0D).add(Attributes.ARMOR, 4.0D).add(EndlessDeepSpaceModAttributes.MAX_SHIELD.get(), 600.0D);
+   	}
+
+	@Overwrite
    	public boolean isPowered() {
    		return (this.getHealth() <= this.getMaxHealth() / 2.0F && this.getShield() <= 0.0F);
    	}
@@ -363,9 +378,24 @@ private static TargetingConditions TARGETING_CONDITIONS;
       return this.getHealth() <= 0.0F && this.getShield() <= 0.0F;
    	}
 
+   	public boolean isAlive() {
+      	return !this.isRemoved() && (this.getHealth() > 0.0F || this.getShield() > 0.0F);
+   	}
+
+   	public void setHealth(float p_21154_) {
+   		WitherBoss boss = ((WitherBoss)(Object)this);
+   		if (boss.getInvulnerableTicks() <= 0 && (this.getShield() <= 0)) {
+   			super.setHealth(p_21154_);
+   		}
+   	}
+
+   	public boolean hasShield() {
+   		return this.getShield() > 0;
+   	}
+
    	public void kill() {
    		this.setShield(0.0F);
-   		this.setHealth(0.0F);
+   		super.setHealth(0.0F);
    		this.bossEvent.setProgress(0.0F);
    	}
 
@@ -374,9 +404,18 @@ private static TargetingConditions TARGETING_CONDITIONS;
       	return boss.getEntityData().get(Data_Shield);
    	}
 
+   	public float getMaxShield() {
+   		WitherBoss boss = ((WitherBoss)(Object)this);
+   		return (float)boss.getAttribute(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:max_shield"))).getValue();
+   	}
+
    	public void setShield(float p_31511_) {
    		WitherBoss boss = ((WitherBoss)(Object)this);
-      	boss.getEntityData().set(Data_Shield, p_31511_);
+   		if (p_31511_ > this.getMaxShield()) {
+   			boss.getEntityData().set(Data_Shield, this.getMaxShield());
+   		} else {
+      		boss.getEntityData().set(Data_Shield, p_31511_);
+   		}
    	}
 
 }

@@ -6,6 +6,9 @@ package shirumengya.rumeng.reborn.endless_deep_space.init;
 
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.SharpnessWeakenedEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.RepairCostReducedEnchantment;
+import shirumengya.rumeng.reborn.endless_deep_space.enchantment.PhysicalStrengthEnchantment;
+import shirumengya.rumeng.reborn.endless_deep_space.enchantment.HeavenlyThunderPunishmentEnchantment;
+import shirumengya.rumeng.reborn.endless_deep_space.enchantment.DisabilityEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.DamageReductionEnchantmentEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.DamageIncreaseEnchantment;
 import shirumengya.rumeng.reborn.endless_deep_space.enchantment.CannotMinePickaxeEnchantment;
@@ -32,4 +35,7 @@ public class EndlessDeepSpaceModEnchantments {
 	public static final RegistryObject<Enchantment> DAMAGE_INCREASE = REGISTRY.register("damage_increase", () -> new DamageIncreaseEnchantment());
 	public static final RegistryObject<Enchantment> BETTER_PROTECTION = REGISTRY.register("better_protection", () -> new BetterProtectionEnchantment());
 	public static final RegistryObject<Enchantment> DAMAGE_REDUCTION = REGISTRY.register("damage_reduction", () -> new DamageReductionEnchantmentEnchantment());
+	public static final RegistryObject<Enchantment> HEAVENLY_THUNDER_PUNISHMENT = REGISTRY.register("heavenly_thunder_punishment", () -> new HeavenlyThunderPunishmentEnchantment());
+	public static final RegistryObject<Enchantment> DISABILITY = REGISTRY.register("disability", () -> new DisabilityEnchantment());
+	public static final RegistryObject<Enchantment> PHYSICAL_STRENGTH = REGISTRY.register("physical_strength", () -> new PhysicalStrengthEnchantment());
 }

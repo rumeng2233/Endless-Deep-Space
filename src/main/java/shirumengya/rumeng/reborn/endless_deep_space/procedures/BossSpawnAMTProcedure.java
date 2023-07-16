@@ -31,7 +31,11 @@ public class BossSpawnAMTProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
+<<<<<<< Updated upstream
 		if (entity.getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("endless_deep_space:boss")))) {
+=======
+		if (entity instanceof LivingEntity && !((LivingEntity)entity).canChangeDimensions()) {
+>>>>>>> Stashed changes
 			if (((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get()) != null
 					&& ((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_HEALTH.get()) != null) {
 				((LivingEntity) entity).getAttribute(EndlessDeepSpaceModAttributes.RANDOM_REGENERATION_PROBABILITY.get())

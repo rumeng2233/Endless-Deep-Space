@@ -31,6 +31,11 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class IEntity extends Monster {
 	public IEntity(PlayMessages.SpawnEntity packet, Level world) {

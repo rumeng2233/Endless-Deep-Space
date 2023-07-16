@@ -80,13 +80,24 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.recipe.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.fishing_rod.*;
 import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.crossbow.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.util.item.*;
 import java.util.Locale;
+<<<<<<< Updated upstream
+=======
+import net.minecraft.sounds.Music;
+import net.minecraft.world.entity.Entity;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.event.*;
+>>>>>>> Stashed changes
 
 @Mod("endless_deep_space")
 public class EndlessDeepSpaceMod {
 	public static final Logger LOGGER = LogManager.getLogger(EndlessDeepSpaceMod.class);
 	public static final String MODID = "endless_deep_space";
+<<<<<<< Updated upstream
 	public static final String Version = "0.0.00013886";
+=======
+	public static final String Version = "0.0.00013893";
+>>>>>>> Stashed changes
 
 	public EndlessDeepSpaceMod() {
 		MinecraftForge.EVENT_BUS.register(this);
@@ -193,6 +204,11 @@ public class EndlessDeepSpaceMod {
         MenuScreens.register(EndlessDeepSpaceCustomMenuTypes.CONVERSION_TABLE_MENU.get(), ConversionTableScreen::new);
         FishingRodItemProperties.addCustomFishingRodItemProperties();
         CrossbowItemProperties.addCustomCrossbowItemProperties();
+<<<<<<< Updated upstream
+=======
+        SpecialItemProperties.addCustomSpecialItemProperties();
+        //StatsInit.init();
+>>>>>>> Stashed changes
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -211,4 +227,22 @@ public class EndlessDeepSpaceMod {
     public static ResourceLocation prefix(String name) {
 		return new ResourceLocation(MODID, name.toLowerCase(Locale.ROOT));
 	}
+<<<<<<< Updated upstream
+=======
+
+	public static void addBoss(Entity entity){
+        CustomBossBarEvent.addBoss(entity);
+    }
+
+    public static void removeBoss(Entity entity){
+        CustomBossBarEvent.removeBoss(entity);
+    }
+
+    /*@SubscribeEvent
+	public static void init(FMLCommonSetupEvent event) {
+		event.enqueueWork(() -> {
+            StatsInit.init();
+        });
+	}*/
+>>>>>>> Stashed changes
 }

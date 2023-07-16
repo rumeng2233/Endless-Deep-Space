@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "endless_deep_space:tracking_bow"
+  },
+  "addition": {
+    "item": "endless_deep_space:gravity_core"
+  },
+  "result": {
+    "item": "endless_deep_space:gravity_bow"
+  }
+}

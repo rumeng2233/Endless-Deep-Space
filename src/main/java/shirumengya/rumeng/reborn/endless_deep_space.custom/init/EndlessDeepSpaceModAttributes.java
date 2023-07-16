@@ -39,6 +39,12 @@ public class EndlessDeepSpaceModAttributes {
 	public static final RegistryObject<Attribute> DAMAGE_PROTECTION_TIME = REGISTRY.register("damage_protection_time",
 			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".damage_protection_time", 20, -2000000000, 2000000000))
 					.setSyncable(true));
+	public static final RegistryObject<Attribute> DESTROY_SPEED = REGISTRY.register("destroy_speed",
+			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".destroy_speed", 1, -2000000000, 2000000000))
+					.setSyncable(true));
+	public static final RegistryObject<Attribute> MAX_SHIELD = REGISTRY.register("max_shield",
+			() -> (new RangedAttribute(EndlessDeepSpaceMod.MODID + ".attribute" + ".max_shield", 0, 0, 2000000000))
+					.setSyncable(true));
 
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {
@@ -68,5 +74,9 @@ public class EndlessDeepSpaceModAttributes {
 		event.add(EntityType.SHULKER, TELEPORT_FAILURE_PROBABILITY.get());
 		event.add(EntityType.PLAYER, TELEPORT_FAILURE_PROBABILITY.get());
 		event.add(EntityType.PLAYER, DAMAGE_REDUCTION.get());
+		event.add(EntityType.PLAYER, DESTROY_SPEED.get());
+		event.add(EntityType.WITHER, MAX_SHIELD.get(), 600);
+		event.add(EndlessDeepSpaceModEntities.WITHEREST.get(), MAX_SHIELD.get(), 600);
+		event.add(EndlessDeepSpaceModEntities.THUNDER_DROWNED.get(), MAX_SHIELD.get(), 60);
 	}
 }

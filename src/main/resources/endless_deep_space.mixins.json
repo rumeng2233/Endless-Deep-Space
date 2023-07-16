@@ -18,7 +18,10 @@
 	"CraftingMenuMixin",
 	"FletchingTableBlockMixin",
 	"WitherBossMixin",
-	"WitherSkullMixin"
+	"WitherSkullMixin",
+	"PlayerMixin",
+	"AbstractHurtingProjectileMixin",
+	"ThrowableProjectileMixin"
   ],
   "client": [
 	"DeathScreenMixin",
@@ -31,7 +34,12 @@
 	"MusicManagerMixin",
 	"LevelRendererMixin",
 	"AnvilScreenMixin",
+<<<<<<< Updated upstream
 	"LevelLoadingScreenMixin"
+=======
+	"LevelLoadingScreenMixin",
+	"WinScreenMixin"
+>>>>>>> Stashed changes
   ],
   "injectors": {
     "defaultRequire": 1

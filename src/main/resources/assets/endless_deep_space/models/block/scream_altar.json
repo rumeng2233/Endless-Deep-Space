@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "endless_deep_space:blocks/netherrack",
+    "particle": "endless_deep_space:blocks/netherrack"
+  },
+  "render_type": "solid"
+}

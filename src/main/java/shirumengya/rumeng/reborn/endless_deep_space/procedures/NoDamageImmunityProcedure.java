@@ -33,7 +33,8 @@ public class NoDamageImmunityProcedure {
 			|| source == EndlessDeepSpaceDamageSource.ENDER_EROSION
 			|| source == DamageSource.OUT_OF_WORLD
 			|| sourceentity instanceof Slime
-			|| sourceentity instanceof EnderDragon) {
+			|| sourceentity instanceof EnderDragon
+			|| source == EndlessDeepSpaceDamageSource.COLORFUL_LIGHTNING_BOLT) {
 				entity.invulnerableTime = 0;
 		}
 	}

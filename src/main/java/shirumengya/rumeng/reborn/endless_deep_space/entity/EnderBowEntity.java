@@ -24,6 +24,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.phys.Vec3;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class EnderBowEntity extends AbstractArrow implements ItemSupplier {
@@ -81,6 +82,10 @@ public class EnderBowEntity extends AbstractArrow implements ItemSupplier {
 	@Override
 	public void tick() {
 		super.tick();
+		if (!this.isNoGravity()) {
+            Vec3 vec3 = this.getDeltaMovement();
+            this.setDeltaMovement(vec3.x, vec3.y - (double)0.0005F, vec3.z);
+        }
 		if (this.inGround)
 			this.discard();
 	}
@@ -115,4 +120,9 @@ public class EnderBowEntity extends AbstractArrow implements ItemSupplier {
 				1f / (RandomSource.create().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
+
+	@Override
+	protected float getWaterInertia() {
+      return 0.0005F;
+   }
 }

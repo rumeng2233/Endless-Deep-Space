@@ -24,7 +24,7 @@ import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 @Mixin(AnvilScreen.class)
 public class AnvilScreenMixin extends ItemCombinerScreen<AnvilMenu> {
 
-@Final
+//@Final
 @Shadow
 Player player;
 private static final ResourceLocation ANVIL_LOCATION = new ResourceLocation("textures/gui/container/anvil.png");

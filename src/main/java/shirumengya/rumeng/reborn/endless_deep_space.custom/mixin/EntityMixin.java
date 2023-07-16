@@ -2,7 +2,7 @@ package shirumengya.rumeng.reborn.endless_deep_space.custom.mixin;
 
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.*;
 import org.spongepowered.asm.mixin.*;
 import com.google.common.collect.ImmutableList;
@@ -127,6 +127,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.Registry;
 import net.minecraft.world.entity.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.entity.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.world.damagesource.EndlessDeepSpaceDamageSource;
 
 @Mixin(Entity.class)
 public class EntityMixin {
@@ -136,5 +138,19 @@ public class EntityMixin {
     Entity entity = ((Entity)(Object)this);
     	if (entity.getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("endless_deep_space:can_not_removed"))))
     	info.cancel();
+   	}
+
+	@Overwrite
+   	public void thunderHit(ServerLevel p_19927_, LightningBolt p_19928_) {
+   		Entity entity = ((Entity)(Object)this);
+      	entity.setRemainingFireTicks(entity.getRemainingFireTicks() + 1);
+      	if (entity.getRemainingFireTicks() == 0) {
+         	entity.setSecondsOnFire(8);
+      	}
+      	if (p_19928_ instanceof ColorfulLightningBolt) {
+      		entity.hurt(EndlessDeepSpaceDamageSource.COLORFUL_LIGHTNING_BOLT, p_19928_.getDamage());
+      	} else {
+      		entity.hurt(DamageSource.LIGHTNING_BOLT, p_19928_.getDamage());
+      	}
    	}
 }

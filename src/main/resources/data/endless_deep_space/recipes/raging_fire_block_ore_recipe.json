@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "endless_deep_space:raging_fire_block"
+      "item": "endless_deep_space.custom:raging_fire_block"
     }
   ],
   "result": {

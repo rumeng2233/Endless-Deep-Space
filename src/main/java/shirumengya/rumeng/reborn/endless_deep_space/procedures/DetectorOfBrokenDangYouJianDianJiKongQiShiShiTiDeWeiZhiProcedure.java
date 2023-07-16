@@ -1,7 +1,8 @@
 package shirumengya.rumeng.reborn.endless_deep_space.procedures;
 
 import shirumengya.rumeng.reborn.endless_deep_space.network.EndlessDeepSpaceModVariables;
-
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.*;
+import shirumengya.rumeng.reborn.endless_deep_space.custom.networking.packet.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,7 @@ import shirumengya.rumeng.reborn.endless_deep_space.custom.client.gui.toasts.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModItems;
+import net.minecraft.server.level.ServerPlayer;
 
 public class DetectorOfBrokenDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure {
 	public static void execute(Entity entity, ItemStack itemstack) {
@@ -44,7 +46,8 @@ public class DetectorOfBrokenDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure {
 							(false));
 			}
 			ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-			EndlessDeepSpaceCommonToast.add(toastcomponent, itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.message.bind_detector_of_broken"), 3000L, -11534256, -16777216);
+			if (entity instanceof ServerPlayer _serverPlayer)
+			ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonToastS2CPacket(itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.message.bind_detector_of_broken"), 3000L, -11534256, -16777216), _serverPlayer);
 		}
 		if (itemstack.getOrCreateTag().getBoolean("whether_to_bind") == true && itemstack.getOrCreateTag().getDouble("available_times") > 0) {
 			if (entity instanceof LivingEntity _entity)
@@ -66,7 +69,8 @@ public class DetectorOfBrokenDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure {
 									(false));
 					}
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonToast.add(toastcomponent, itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.show_type.always"), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonToastS2CPacket(itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.show_type.always"), 3000L, -11534256, -16777216), _serverPlayer);
 				} else if ((itemstack.getOrCreateTag().getString("show_type")).equals("always")) {
 					itemstack.getOrCreateTag().putString("show_type", "right_click");
 					if (EndlessDeepSpaceModClientConfig.SEND_TO_TOP_OF_THE_HOTBAR.get() == true) {
@@ -83,7 +87,8 @@ public class DetectorOfBrokenDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure {
 									(false));
 					}
 					ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-					EndlessDeepSpaceCommonToast.add(toastcomponent, itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.show_type.right_click"), 3000L, -11534256, -16777216);
+					if (entity instanceof ServerPlayer _serverPlayer)
+					ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonToastS2CPacket(itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.translatable("item.endless_deep_space.detector_of_broken.show_type.right_click"), 3000L, -11534256, -16777216), _serverPlayer);
 				}
 			}
 			if ((itemstack.getOrCreateTag().getString("show_type")).equals("right_click")) {
@@ -104,7 +109,8 @@ public class DetectorOfBrokenDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure {
 								(false));
 				}
 				ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
-				EndlessDeepSpaceCommonToast.add(toastcomponent, itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.literal((Component.translatable("item.endless_deep_space.detector_of_broken.broken_value").getString() + "" + (entity.getCapability(EndlessDeepSpaceModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new EndlessDeepSpaceModVariables.PlayerVariables())).broken_value)), 2000L, -11534256, -16777216);
+				if (entity instanceof ServerPlayer _serverPlayer)
+				ModMessages.sendToPlayer(new SendEndlessDeepSpaceCommonToastS2CPacket(itemstack, Component.translatable("item.endless_deep_space.detector_of_broken"), Component.literal((Component.translatable("item.endless_deep_space.detector_of_broken.broken_value").getString() + "" + (entity.getCapability(EndlessDeepSpaceModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new EndlessDeepSpaceModVariables.PlayerVariables())).broken_value)), 2000L, -11534256, -16777216), _serverPlayer);
 			}
 		}
 	}

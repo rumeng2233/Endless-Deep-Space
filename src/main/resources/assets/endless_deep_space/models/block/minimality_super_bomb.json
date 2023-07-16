@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "endless_deep_space:blocks/tnt_bottom",
+    "up": "endless_deep_space:blocks/tnt_top",
+    "north": "endless_deep_space:blocks/tnt_side",
+    "east": "endless_deep_space:blocks/tnt_side",
+    "south": "endless_deep_space:blocks/tnt_side",
+    "west": "endless_deep_space:blocks/tnt_side",
+    "particle": "endless_deep_space:blocks/tnt_bottom"
+  },
+  "render_type": "solid"
+}

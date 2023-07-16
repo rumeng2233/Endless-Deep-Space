@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wither_skull",
+    "minecraft:trident",
+    "endless_deep_space.custom:ender_dragon_wind_bomb",
+    "endless_deep_space.custom:penetrating_bow_arrow",
+    "endless_deep_space.custom:screaming_ghast_firball",
+    "endless_deep_space.custom:screaming_ghast_magic_bullet",
+    "endless_deep_space.custom:screaming_ghast_gravity_bomb"
+  ]
+}

@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-
+import shirumengya.rumeng.reborn.endless_deep_space.custom.world.damagesource.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +31,7 @@ public class DieOfLightningBoltTickProcedure {
 	private static void execute(@Nullable Event event, Entity entity, DamageSource source) {
 		if (entity == null)
 			return;
-		if (source == DamageSource.LIGHTNING_BOLT) {
+		if (source == DamageSource.LIGHTNING_BOLT || source == EndlessDeepSpaceDamageSource.COLORFUL_LIGHTNING_BOLT) {
 			if (entity instanceof ServerPlayer _player) {
 				Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("endless_deep_space:die_of_lightning_bolt"));
 				AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);

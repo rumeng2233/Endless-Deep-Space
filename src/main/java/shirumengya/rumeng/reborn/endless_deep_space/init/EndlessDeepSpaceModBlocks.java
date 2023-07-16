@@ -4,9 +4,17 @@
  */
 package shirumengya.rumeng.reborn.endless_deep_space.init;
 
+import shirumengya.rumeng.reborn.endless_deep_space.block.WitherWrathAltarBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.WaterAbsorberBlock;
+<<<<<<< Updated upstream
+=======
+import shirumengya.rumeng.reborn.endless_deep_space.block.SuperBombBlock;
+import shirumengya.rumeng.reborn.endless_deep_space.block.ScreamAltarBlock;
+>>>>>>> Stashed changes
 import shirumengya.rumeng.reborn.endless_deep_space.block.RagingFireOreBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.RagingFireBlockBlock;
+import shirumengya.rumeng.reborn.endless_deep_space.block.MinimalitySuperBombBlock;
+import shirumengya.rumeng.reborn.endless_deep_space.block.MiniSuperBombBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.LavaAbsorberBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.GeocentricStoneBlock;
 import shirumengya.rumeng.reborn.endless_deep_space.block.GeocentricPortalBlock;
@@ -38,6 +46,14 @@ public class EndlessDeepSpaceModBlocks {
 	public static final RegistryObject<Block> FROZEN_BLOCK = REGISTRY.register("frozen_block", () -> new FrozenBlockBlock());
 	public static final RegistryObject<Block> LAVA_ABSORBER = REGISTRY.register("lava_absorber", () -> new LavaAbsorberBlock());
 	public static final RegistryObject<Block> WATER_ABSORBER = REGISTRY.register("water_absorber", () -> new WaterAbsorberBlock());
+<<<<<<< Updated upstream
+=======
+	public static final RegistryObject<Block> SCREAM_ALTAR = REGISTRY.register("scream_altar", () -> new ScreamAltarBlock());
+	public static final RegistryObject<Block> WITHER_WRATH_ALTAR = REGISTRY.register("wither_wrath_altar", () -> new WitherWrathAltarBlock());
+	public static final RegistryObject<Block> SUPER_BOMB = REGISTRY.register("super_bomb", () -> new SuperBombBlock());
+	public static final RegistryObject<Block> MINI_SUPER_BOMB = REGISTRY.register("mini_super_bomb", () -> new MiniSuperBombBlock());
+	public static final RegistryObject<Block> MINIMALITY_SUPER_BOMB = REGISTRY.register("minimality_super_bomb", () -> new MinimalitySuperBombBlock());
+>>>>>>> Stashed changes
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSideHandler {

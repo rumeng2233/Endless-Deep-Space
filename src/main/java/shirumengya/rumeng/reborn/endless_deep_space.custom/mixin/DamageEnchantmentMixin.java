@@ -16,7 +16,7 @@ import net.minecraft.world.item.enchantment.*;
 
 @Mixin(DamageEnchantment.class)
 public class DamageEnchantmentMixin {
-	@Final
+	//@Final
 	@Shadow
 	int type;
 	@Overwrite

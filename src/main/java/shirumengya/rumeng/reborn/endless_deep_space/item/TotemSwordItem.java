@@ -22,6 +22,8 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.ElytraItem;
 
 public class TotemSwordItem extends SwordItem {
 	public TotemSwordItem() {
@@ -64,6 +66,26 @@ public class TotemSwordItem extends SwordItem {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		TotemSwordDangYouJianDianJiKongQiShiShiTiDeWeiZhiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
+	}
+
+	@Override
+    public boolean canElytraFly(ItemStack stack, LivingEntity entity) {
+        return true;
+    }
+
+    @Override
+    public boolean elytraFlightTick(ItemStack stack, LivingEntity entity, int flightTicks) {
+        return true;
+    }
+
+	@Override
+	public float getDestroySpeed(ItemStack p_43288_, BlockState p_43289_) {
+		return Float.MAX_VALUE;
+	}
+
+	@Override
+	public boolean isCorrectToolForDrops(BlockState p_43298_) {
+		return true;
 	}
 
 	@Override

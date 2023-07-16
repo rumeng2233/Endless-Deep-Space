@@ -21,6 +21,7 @@ import net.minecraft.server.level.ServerLevel;
 @Mod.EventBusSubscriber
 public class WardenBossBarProcedure {
 private static final ServerBossEvent wardenEvent = (ServerBossEvent)(new ServerBossEvent(Component.translatable("entity.minecraft.warden"), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS)).setDarkenScreen(true).setCreateWorldFog(true);
+
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {

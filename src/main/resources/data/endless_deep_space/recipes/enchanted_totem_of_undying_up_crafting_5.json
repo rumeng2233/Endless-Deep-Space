@@ -1,0 +1,24 @@
+{
+  "group": "enchanted_totem_of_undying_crafting",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XOX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "O": {
+      "type": "forge:partial_nbt",
+      "item": "endless_deep_space:enchanted_totem_of_undying",
+       "nbt": "{RestoreHealth:5}"
+    }
+  },
+  "result": {
+  	"type": "forge:partial_nbt",
+    "item": "endless_deep_space:enchanted_totem_of_undying",
+    "nbt": "{RestoreHealth:6}"
+  }
+}

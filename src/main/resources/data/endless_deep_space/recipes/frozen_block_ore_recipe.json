@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "endless_deep_space:frozen_block"
+      "item": "endless_deep_space.custom:frozen_block"
     }
   ],
   "result": {

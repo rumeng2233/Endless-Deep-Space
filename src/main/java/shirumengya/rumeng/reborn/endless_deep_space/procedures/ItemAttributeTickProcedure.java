@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package shirumengya.rumeng.reborn.endless_deep_space.procedures;
 
 import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModEnchantments;
@@ -142,3 +143,152 @@ public class ItemAttributeTickProcedure {
 		}
 	}
 }
+=======
+package shirumengya.rumeng.reborn.endless_deep_space.procedures;
+
+import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModItems;
+import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModEnchantments;
+import shirumengya.rumeng.reborn.endless_deep_space.EndlessDeepSpaceMod;
+
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.event.ItemAttributeModifierEvent;
+import net.minecraftforge.common.ForgeMod;
+
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.resources.ResourceLocation;
+
+import javax.annotation.Nullable;
+
+import java.util.UUID;
+
+@Mod.EventBusSubscriber
+public class ItemAttributeTickProcedure {
+	@SubscribeEvent
+	public static void addAttributeModifier(ItemAttributeModifierEvent event) {
+		execute(event, event.getItemStack());
+	}
+
+	public static void execute(ItemStack itemstack) {
+		execute(null, itemstack);
+	}
+
+	private static void execute(@Nullable Event event, ItemStack itemstack) {
+		if (itemstack.getItem() == EndlessDeepSpaceModItems.ENCHANTED_TOTEM_OF_UNDYING.get() || itemstack.getItem() == Items.TOTEM_OF_UNDYING) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.MAINHAND) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_probability")),
+						(new AttributeModifier(UUID.fromString("40ba92a7-94aa-49d0-b328-6df891ddd428"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_probability", 0.01, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_health")),
+						(new AttributeModifier(UUID.fromString("55c61470-b0c1-4ad4-8d91-07a2ab6bad48"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_health", 1, AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.OFFHAND) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_probability")),
+						(new AttributeModifier(UUID.fromString("b942186f-40ea-4d96-ab9e-b069bdd6b557"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_probability", 0.01, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_health")),
+						(new AttributeModifier(UUID.fromString("465c02a3-77cd-4f93-90c7-8126c58bbd21"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_health", 1, AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (itemstack.getItem() == Items.TURTLE_HELMET) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.HEAD) {
+				_event.addModifier(ForgeMod.SWIM_SPEED.get(), (new AttributeModifier(UUID.fromString("0632879b-61b5-4820-988d-969efe143a3d"), EndlessDeepSpaceMod.MODID + "." + "swim_speed", 2, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:destroy_speed")),
+						(new AttributeModifier(UUID.fromString("77565857-b940-4c6f-a39e-b12b4b462f9e"), EndlessDeepSpaceMod.MODID + "." + "destroy_speed", 1, AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (itemstack.getItem() == Items.ELYTRA) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.CHEST) {
+				_event.addModifier(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR,
+						(new AttributeModifier(UUID.fromString("12e03493-fa2e-4c98-b56a-48d902e6a77e"), EndlessDeepSpaceMod.MODID + "." + "armor", 8, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS,
+						(new AttributeModifier(UUID.fromString("dc77739b-a2fc-4ef1-bc5e-bc0cbb545e79"), EndlessDeepSpaceMod.MODID + "." + "armor_toughness", 3, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(net.minecraft.world.entity.ai.attributes.Attributes.KNOCKBACK_RESISTANCE,
+						(new AttributeModifier(UUID.fromString("805cb0ba-05ad-4280-ba44-bdbb3c61d617"), EndlessDeepSpaceMod.MODID + "." + "knockback_resistance", 0.1, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_probability")),
+						(new AttributeModifier(UUID.fromString("2063189a-7550-4847-86c8-0c058f95822d"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_probability", 0.02, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:random_regeneration_health")),
+						(new AttributeModifier(UUID.fromString("7d48b130-224a-46f1-a8e5-8ffbc4bc5daa"), EndlessDeepSpaceMod.MODID + "." + "random_regeneration_health", 2, AttributeModifier.Operation.ADDITION)));
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")),
+						(new AttributeModifier(UUID.fromString("689f359f-f34b-40bb-a1dd-1838ca9b7dcb"), EndlessDeepSpaceMod.MODID + "." + "damage_reduction", 2, AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.CANNOT_MINE.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.MAINHAND) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:cannot_mine")), (new AttributeModifier(UUID.fromString("21e5c09b-0b71-4370-9eec-ef7b266cffb6"),
+						EndlessDeepSpaceMod.MODID + "." + "cannot_mine", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.CANNOT_MINE.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_INCREASE.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.HEAD) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("38033744-f894-4f09-8897-d6c52484c8ae"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_increase", ((-(EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_INCREASE.get(), itemstack))) * 4), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.CHEST) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("637ab6bc-0ec8-4079-b00c-7cabcbe97245"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_increase", ((-(EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_INCREASE.get(), itemstack))) * 4), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.LEGS) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("6b05198c-8748-431f-b10e-1e38b7195257"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_increase", ((-(EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_INCREASE.get(), itemstack))) * 4), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.FEET) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("fe277078-3f47-4de9-8cd4-5f3d824e3d0d"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_increase", ((-(EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_INCREASE.get(), itemstack))) * 4), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.BETTER_PROTECTION.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.HEAD) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("42164ac0-3536-4b84-89fa-04e0a0c8b1a3"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.BETTER_PROTECTION.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.CHEST) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("903a5348-eaac-4c82-ad17-f9cc778a5d1a"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.BETTER_PROTECTION.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.LEGS) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("036cc212-a27f-4256-a948-926ec0a72c02"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.BETTER_PROTECTION.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.FEET) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("68c5f6e4-ce7d-48c1-92d0-7d222375449b"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.BETTER_PROTECTION.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_REDUCTION.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.HEAD) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("56bb1f47-7884-4ae3-90a1-cb141f5ea2a3"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_REDUCTION.get(), itemstack) * 3), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.CHEST) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("db859eec-17c4-4ffe-ae2c-296c3342c3f2"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_REDUCTION.get(), itemstack) * 3), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.LEGS) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("0226c5ae-e519-423e-b8ac-40420a48ae86"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_REDUCTION.get(), itemstack) * 3), AttributeModifier.Operation.ADDITION)));
+			}
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.FEET) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:damage_reduction")), (new AttributeModifier(UUID.fromString("4e5599e1-5b85-4eb4-8f22-2ecbc66cceba"),
+						EndlessDeepSpaceMod.MODID + "." + "damage_reduction", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DAMAGE_REDUCTION.get(), itemstack) * 3), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DISABILITY.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.MAINHAND) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:destroy_speed")), (new AttributeModifier(UUID.fromString("3e0b4931-3a94-4dc6-89c4-99934f1c82c9"),
+						EndlessDeepSpaceMod.MODID + "." + "destroy_speed", (-(EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.DISABILITY.get(), itemstack) * 2)), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+		if (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.PHYSICAL_STRENGTH.get(), itemstack) != 0) {
+			if (event instanceof ItemAttributeModifierEvent _event && _event.getSlotType() == EquipmentSlot.MAINHAND) {
+				_event.addModifier(ForgeRegistries.ATTRIBUTES.getValue(new ResourceLocation("endless_deep_space:destroy_speed")), (new AttributeModifier(UUID.fromString("fef4aebd-93d3-44c1-8cf2-62b2ad1e4574"),
+						EndlessDeepSpaceMod.MODID + "." + "destroy_speed", (EnchantmentHelper.getItemEnchantmentLevel(EndlessDeepSpaceModEnchantments.PHYSICAL_STRENGTH.get(), itemstack)), AttributeModifier.Operation.ADDITION)));
+			}
+		}
+	}
+}
+>>>>>>> Stashed changes

@@ -1,0 +1,12 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": {
+    "type": "forge:any"
+  },
+  "spawners": {
+    "type": "endless_deep_space:thunder_drowned",
+    "weight": 1,
+    "minCount": 1,
+    "maxCount": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "endless_deep_space:blocks/red_sandstone_top",
+    "up": "endless_deep_space:blocks/red_sandstone_top",
+    "north": "endless_deep_space:blocks/chiseled_red_sandstone",
+    "east": "endless_deep_space:blocks/chiseled_red_sandstone",
+    "south": "endless_deep_space:blocks/chiseled_red_sandstone",
+    "west": "endless_deep_space:blocks/chiseled_red_sandstone",
+    "particle": "endless_deep_space:blocks/red_sandstone_top"
+  },
+  "render_type": "solid"
+}

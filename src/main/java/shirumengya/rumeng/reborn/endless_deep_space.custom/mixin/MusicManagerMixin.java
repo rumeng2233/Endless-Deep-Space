@@ -12,12 +12,15 @@ import org.spongepowered.asm.mixin.*;
 
 @Mixin(MusicManager.class)
 public class MusicManagerMixin {
+<<<<<<< Updated upstream
 @Final
 @Shadow
 Minecraft minecraft;
 SoundInstance currentMusic;
 int nextSongDelay = 100;
 RandomSource random = RandomSource.create();
+=======
+>>>>>>> Stashed changes
 
 	@Overwrite
 	public void tick() {

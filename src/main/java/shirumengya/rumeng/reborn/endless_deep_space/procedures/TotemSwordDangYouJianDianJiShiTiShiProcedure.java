@@ -1,19 +1,21 @@
 package shirumengya.rumeng.reborn.endless_deep_space.procedures;
 
 import shirumengya.rumeng.reborn.endless_deep_space.init.EndlessDeepSpaceModItems;
-
+import shirumengya.rumeng.reborn.endless_deep_space.custom.entity.*;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.client.gui.screens.Screen;
-
 import javax.annotation.Nullable;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.server.level.ServerLevel;
 
 @Mod.EventBusSubscriber
 public class TotemSwordDangYouJianDianJiShiTiShiProcedure {
@@ -33,7 +35,13 @@ public class TotemSwordDangYouJianDianJiShiTiShiProcedure {
 			return;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == EndlessDeepSpaceModItems.TOTEM_SWORD.get()
 				|| (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == EndlessDeepSpaceModItems.TOTEM_SWORD.get()) {
-			if (Screen.hasShiftDown() == false && Screen.hasAltDown() == false && Screen.hasControlDown() == false) {
+			if (Screen.hasShiftDown() == false && Screen.hasAltDown() == false && Screen.hasControlDown() == false && !(entity instanceof Player)) {
+				if (entity.level instanceof ServerLevel _level) {
+					ColorfulLightningBolt entityToSpawn = new ColorfulLightningBolt(_level, entity.getX(), entity.getY(), entity.getZ(), Mth.nextInt(RandomSource.create(), 0, 255), Mth.nextInt(RandomSource.create(), 0, 255), Mth.nextInt(RandomSource.create(), 0, 255));
+					entityToSpawn.setVisualOnly(true);
+					entityToSpawn.setDamage(Float.MAX_VALUE);
+					_level.addFreshEntity(entityToSpawn);
+				}
 				if (!entity.level.isClientSide())
 					entity.discard();
 				if (sourceentity instanceof LivingEntity _entity)

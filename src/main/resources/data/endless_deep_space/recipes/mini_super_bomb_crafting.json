@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " 1 ",
+    "345",
+    " 7 "
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:tnt"
+    },
+    "3": {
+      "item": "minecraft:tnt"
+    },
+    "4": {
+      "item": "minecraft:nether_star"
+    },
+    "5": {
+      "item": "minecraft:tnt"
+    },
+    "7": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "endless_deep_space.custom:mini_super_bomb",
+    "count": 1
+  }
+}

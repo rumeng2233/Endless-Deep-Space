@@ -29,8 +29,20 @@ public class OptionsScreenMixin extends Screen {
 	}
 	@Inject(method = {"init"}, at = {@At("HEAD")}, cancellable = true)
 	protected void init(CallbackInfo info) {
+<<<<<<< Updated upstream
 		this.addRenderableWidget(new Button(this.width / 2 - 155, this.height / 2 - 67, 310, 20, Component.translatable("options.endless_deep_space.credits"), (p_96274_) -> {
          this.minecraft.setScreen(new EndlessDeepSpaceCredits("credits_and_postcredits", "poem", 0.75F, true, true, Runnables.doNothing()));
+=======
+		this.addRenderableWidget(new Button(this.width / 2 - 155, this.height / 6 + 15, 310, 20, Component.translatable("options.endless_deep_space.credits"), (p_96274_) -> {
+			OptionsScreen screen = ((OptionsScreen)(Object)this);
+			if (net.minecraftforge.fml.ModList.get().isLoaded("blue_skies")) {
+				ToastComponent toastcomponent = Minecraft.getInstance().getToasts();
+				EndlessDeepSpaceCommonToast.add(toastcomponent, (new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("blue_skies:defying_starlight")))), Component.literal("Music from Blue Skies"), Component.literal("Defying Starlight"), 40000L, -11534256, -12808848);
+				this.minecraft.setScreen(new EndlessDeepSpaceCredits("endless_deep_space_credits", "vanilla", EndlessDeepSpaceCredits.LogoType.HAS_EDSLOGO_AND_EDITION, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("blue_skies:records.defying_starlight")), 0.75F, true, true, Runnables.doNothing(), screen));
+			} else {
+         		this.minecraft.setScreen(new EndlessDeepSpaceCredits("endless_deep_space_credits", "vanilla", EndlessDeepSpaceCredits.LogoType.HAS_EDSLOGO_AND_EDITION, SoundEvents.MUSIC_CREDITS, 0.75F, true, true, Runnables.doNothing(), screen));
+			}
+>>>>>>> Stashed changes
       }));
 	}
 }

@@ -288,7 +288,7 @@ import net.minecraft.world.entity.monster.warden.Warden;
 @Mixin(Minecraft.class)
 public class MinecraftMixin {
 	
-@Final
+//@Final
 @Shadow
 IntegratedServer singleplayerServer;
 ServerData currentServer;
@@ -306,6 +306,7 @@ ServerData currentServer;
       }
    	}
 
+<<<<<<< Updated upstream
    @Overwrite
    public Music getSituationalMusic() {
    	  if (Calendar.getInstance().get(Calendar.MONTH) == 3 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1) {
@@ -341,34 +342,87 @@ ServerData currentServer;
       	return Musics.MENU;
       }
    }
+=======
+	@Inject(method = {"setScreen"}, at = {@At("TAIL")}, cancellable = true)
+   	public void setScreen(@Nullable Screen p_91153_, CallbackInfo info) {
+   		if (Minecraft.getInstance().screen != null) {
+   			LOGGER.info("Opening Screen:[" + Minecraft.getInstance().screen.getClass().getCanonicalName() + "]");
+   		} else {
+   			LOGGER.info("Opening Screen:[null]");
+   		}
+   	}
 
-   @Overwrite
-   private String createTitle() {
-      StringBuilder stringbuilder = new StringBuilder("Minecraft");
-      if (Minecraft.checkModStatus().shouldReportAsModified()) {
-         stringbuilder.append("*");
-      }
+   	@Overwrite
+   	public Music getSituationalMusic() {
+   	  	if (Calendar.getInstance().get(Calendar.MONTH) == 3 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1) {
+         	return EndlessDeepSpaceMusics.NEVER_GONNA_GIVE_YOU_UP;
+   	  	} else if (Minecraft.getInstance().screen instanceof EndlessDeepSpaceCredits) {
+         	return EndlessDeepSpaceCredits.GUI_MUSIC();
+      	} else if (Minecraft.getInstance().screen instanceof WinScreen) {
+         	return Musics.CREDITS;
+      	} else if (Minecraft.getInstance().screen instanceof AdvancementsScreen) {
+      	 	return EndlessDeepSpaceMusics.UNDER_WATER;
+      	} else if (Minecraft.getInstance().player != null) {
+      	  	BlockPos pos = Minecraft.getInstance().gameRenderer.getMainCamera().getBlockPosition();
+		  	if (!Minecraft.getInstance().player.level.getEntitiesOfClass(Warden.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 49, 51, 49), e -> true).isEmpty()
+		  	|| !Minecraft.getInstance().player.level.getEntitiesOfClass(TheVoidCubeEntity.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 320, 320, 320), e -> true).isEmpty()) {
+		  		return EndlessDeepSpaceMusics.MUSIC_C418_0X10C;
+		  	}
+		  	if (!Minecraft.getInstance().player.level.getEntitiesOfClass(ThunderDrownedEntity.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 64, 64, 64), e -> true).isEmpty()) {
+		  		return EndlessDeepSpaceMusics.UNDER_WATER;
+		  	}
+      	  	if (!Minecraft.getInstance().player.level.getEntitiesOfClass(MadWitchEntity.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 256, 256, 256), e -> true).isEmpty()
+      	  		|| !Minecraft.getInstance().player.level.getEntitiesOfClass(WitherestEntity.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 256, 256, 256), e -> true).isEmpty()
+      	  		|| !Minecraft.getInstance().player.level.getEntitiesOfClass(WitherBoss.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 76, 76, 76), e -> true).isEmpty()
+      	  		|| !Minecraft.getInstance().player.level.getEntitiesOfClass(Ghast.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 100, 100, 100), e -> true).isEmpty()
+      	  		|| !Minecraft.getInstance().player.level.getEntitiesOfClass(ScreamingGhastEntity.class, AABB.ofSize(new Vec3(pos.getX(), pos.getY(), pos.getZ()), 100, 100, 100), e -> true).isEmpty()) {
+         		return EndlessDeepSpaceMusics.MINECRAFT_MUSIC_BIOME_NETHER_WASTES;
+      	  	} 
+      	  	if (Minecraft.getInstance().player.level.dimension() == Level.END) {
+             	return Minecraft.getInstance().gui.getBossOverlay().shouldPlayMusic() ? Musics.END_BOSS : Musics.END;
+          	} else if (Minecraft.getInstance().player.level.dimension() == (ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("endless_deep_space:nihility")))) {
+         		return EndlessDeepSpaceMusics.MINECRAFT_MUSIC_BIOME_NETHER_WASTES;
+          	} else if (Minecraft.getInstance().player.isUnderWater()) {
+	         	return Musics.UNDER_WATER;
+	      	} else {
+            	Holder<Biome> holder = Minecraft.getInstance().player.level.getBiome(Minecraft.getInstance().player.blockPosition());
+            	return Minecraft.getInstance().player.level.dimension() != Level.NETHER && Minecraft.getInstance().player.getAbilities().instabuild && Minecraft.getInstance().player.getAbilities().mayfly ? Musics.CREATIVE : holder.value().getBackgroundMusic().orElse(Musics.GAME);
+	      	} 
+   	  	} else if (Calendar.getInstance().get(Calendar.MONTH) == 8 && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 28) {
+      		return EndlessDeepSpaceMusics.GENSHIN_IMPACT_MAIN_THEME;
+      	} else {
+      		return Musics.MENU;
+      	}
+   	}
+>>>>>>> Stashed changes
 
-      stringbuilder.append(" ");
-      stringbuilder.append(SharedConstants.getCurrentVersion().getName());
-      ClientPacketListener clientpacketlistener = Minecraft.getInstance().getConnection();
-      if (clientpacketlistener != null && clientpacketlistener.getConnection().isConnected()) {
-         stringbuilder.append(" - ");
-         if (this.singleplayerServer != null && !this.singleplayerServer.isPublished()) {
-            stringbuilder.append(I18n.get("title.singleplayer"));
-         } else if (Minecraft.getInstance().isConnectedToRealms()) {
-            stringbuilder.append(I18n.get("title.multiplayer.realms"));
-         } else if (this.singleplayerServer == null && (this.currentServer == null || !this.currentServer.isLan())) {
-            stringbuilder.append(I18n.get("title.multiplayer.other"));
-         } else {
-            stringbuilder.append(I18n.get("title.multiplayer.lan"));
-         }
-      }
-      stringbuilder.append(" | ");
-      stringbuilder.append("Endless Deep Space");
-      stringbuilder.append(" - ");
-      stringbuilder.append(EndlessDeepSpaceMod.Version);
+   	@Overwrite
+   	private String createTitle() {
+      	StringBuilder stringbuilder = new StringBuilder("Minecraft");
+      	if (Minecraft.checkModStatus().shouldReportAsModified()) {
+         	stringbuilder.append("*");
+      	}
 
-      return stringbuilder.toString();
-   }
+      	stringbuilder.append(" ");
+      	stringbuilder.append(SharedConstants.getCurrentVersion().getName());
+      	ClientPacketListener clientpacketlistener = Minecraft.getInstance().getConnection();
+      	if (clientpacketlistener != null && clientpacketlistener.getConnection().isConnected()) {
+         	stringbuilder.append(" - ");
+         	if (this.singleplayerServer != null && !this.singleplayerServer.isPublished()) {
+            	stringbuilder.append(I18n.get("title.singleplayer"));
+         	} else if (Minecraft.getInstance().isConnectedToRealms()) {
+            	stringbuilder.append(I18n.get("title.multiplayer.realms"));
+         	} else if (this.singleplayerServer == null && (this.currentServer == null || !this.currentServer.isLan())) {
+            	stringbuilder.append(I18n.get("title.multiplayer.other"));
+         	} else {
+            	stringbuilder.append(I18n.get("title.multiplayer.lan"));
+         	}
+      	}
+      	stringbuilder.append(" | ");
+      	stringbuilder.append("Endless Deep Space");
+      	stringbuilder.append(" - ");
+      	stringbuilder.append(EndlessDeepSpaceMod.Version);
+
+      	return stringbuilder.toString();
+   	}
 }

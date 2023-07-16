@@ -65,6 +65,15 @@ public class ItemInit {
 	public static final RegistryObject<Item> ILLUSIONER_SPAWN_EGG = REGISTRY.register("illusioner_spawn_egg", () -> new SpawnEggItem(EntityType.ILLUSIONER, -13395457, -3355444, new Item.Properties().tab(CreativeModeTabInit.ENDLESS_DEEP_SPACE_CUSTOM)));
 	public static final RegistryObject<Item> LAVA_ABSORBER = edsblock(EndlessDeepSpaceModBlocks.LAVA_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
 	public static final RegistryObject<Item> WATER_ABSORBER = edsblock(EndlessDeepSpaceModBlocks.WATER_ABSORBER, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+<<<<<<< Updated upstream
+=======
+	public static final RegistryObject<Item> SCREAM_ALTAR = edsblock(EndlessDeepSpaceModBlocks.SCREAM_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> WITHER_WRATH_ALTAR = edsblock(EndlessDeepSpaceModBlocks.WITHER_WRATH_ALTAR, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> STAR_CUBE_ENCHANTING_TABLE = block(BlockInit.STAR_CUBE_ENCHANTING_TABLE, CreativeModeTabInit.ENDLESS_DEEP_SPACE_CUSTOM);
+	public static final RegistryObject<Item> SUPER_BOMB = edsblock(EndlessDeepSpaceModBlocks.SUPER_BOMB, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> MINI_SUPER_BOMB = edsblock(EndlessDeepSpaceModBlocks.MINI_SUPER_BOMB, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+	public static final RegistryObject<Item> MINIMALITY_SUPER_BOMB = edsblock(EndlessDeepSpaceModBlocks.MINIMALITY_SUPER_BOMB, EndlessDeepSpaceModTabs.TAB_ENDLESS_DEEP_SPACE_TAP);
+>>>>>>> Stashed changes
 
 	public static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(CreativeModeTabInit.ENDLESS_DEEP_SPACE_CUSTOM)));

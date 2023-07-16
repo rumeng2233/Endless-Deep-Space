@@ -12,6 +12,12 @@ public class BowItemProperties {
         makeBow(ItemInit.DURABLE_BOW.get());
         makeBow(EndlessDeepSpaceModItems.ENDER_BOW.get());
         makeBow(EndlessDeepSpaceModItems.PENETRATING_BOW.get());
+<<<<<<< Updated upstream
+=======
+        makeBow(EndlessDeepSpaceModItems.TRACKING_BOW.get());
+        makeBow(EndlessDeepSpaceModItems.GRAVITY_BOW.get());
+        makeBow(EndlessDeepSpaceModItems.ANTIGRAVITY_BOW.get());
+>>>>>>> Stashed changes
     }
 
     private static void makeBow(Item item) {
